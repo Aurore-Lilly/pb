@@ -64,6 +64,14 @@
   color: var(--white);
 }
 
+@media (max-width:400px){
+  .testimonial-text{
+    h2{
+      font-size: 15px;
+    }
+  }
+}
+
 @media (min-width: 768px) {
   .testimonial-text {
     font-size: 17px;

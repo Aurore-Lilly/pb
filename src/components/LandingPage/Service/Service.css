@@ -24,12 +24,13 @@
     p{
       margin: auto;
       margin-top: 50px;
-      margin-bottom: 50px;
+      margin-bottom: 0px;
       color: var(--red);
       font-family: 'cursive';
       text-transform: uppercase;
       font-size: 15px;
       position: relative;
+      max-width:90vw;
     }
   }
 }

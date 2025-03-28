@@ -75,3 +75,10 @@ section{
   text-transform: uppercase;
   font-weight: 200;
 }
+
+
+@media (max-width:400px){
+  .getInTouch h1 {
+    font-size: 1.8rem;
+  }
+}

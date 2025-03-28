@@ -24,7 +24,6 @@ const LandingPage = () => {
         const response = await client.getEntries({
           content_type: 'photographerPortfolio',
         });
-        console.log('Data fetched from Contentful:', response.items);
         setData(response.items);
       } catch (error) {
         console.error('Error fetching data from Contentful', error);

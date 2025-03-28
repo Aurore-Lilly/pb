@@ -20,7 +20,11 @@
   font-size: clamp(3rem, 7vw, 5rem);
   color: var(--white);
   z-index: 10;
+  margin: 5px;
   animation: pulse 1.5s infinite ease-in-out;
+  sup {
+    font-size: clamp(3rem, 7vw, 5rem);
+  }
 }
 
 @keyframes pulse {

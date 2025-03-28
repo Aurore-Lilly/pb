@@ -114,11 +114,26 @@
   color:white;
 }
 
+@media (max-width: 800px){
+    .hero-background-portfolio{
+    width:84%;
+  }
+
+  .portfolio-heading{
+    top:12%;
+    font-size: clamp(6rem, 9vw, 10rem);
+  }
+  .portfolio-text-container{
+    max-width: 90vw;
+  }
+}
+
 
 @media (min-width: 800px){
   .subtext{
     max-width:55vw;
   }
+
 }
 
 @media (min-width:1324px){

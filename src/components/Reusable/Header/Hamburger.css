@@ -167,7 +167,7 @@
   height: 350px;
   border-radius: 50%;
   left: 0;
-  transform: translate(56%, 50%) !important;
+  transform: translate(56%, 50%) ;
 }
 
 .menu-footer-text {
@@ -202,28 +202,6 @@
   font-style: italic;
 }
 
-/* Responsive Design */
-@media (max-width: 400px) {
-  .toggle-button {
-    padding: 0 6px;
-  }
-
-  .open-text, .close-text {
-    font-size: 14px;
-  }
-
-  .menu-list li {
-    font-size: 20px;
-  }
-
-  .menu-footer-text {
-    font-size: 36px;
-
-    sup {
-      font-size: 36px;
-    }
-  }
-}
 
 @media (min-width: 1740px) {
   .menu {
@@ -235,7 +213,7 @@
 @media (max-width: 768px) {
   .menu-footer {
     width: 75%;
-    transform: translate(15%, 50%) !important;
+    transform: translate(15%, 50%)
   }
 
   .menu-content {
@@ -252,6 +230,50 @@
 
   .menu-footer-text {
     font-size: 36px;
+
+    sup {
+      font-size: 36px;
+    }
+  }
+}
+
+
+/* Responsive Design */
+@media (max-width: 400px) {
+  .toggle-button {
+    padding: 0 6px;
+  }
+
+  .open-text, .close-text {
+    font-size: 14px;
+  }
+  .menu-list {
+    margin:50px 0;
+  }
+  .menu-list .secondary {
+    font-size: 14px;
+
+    line-height: 12px;
+  }
+  .menu-list .secondary a {
+  padding: 10px 0;
+  }
+  .menu-list li {
+    font-size: 20px;
+    padding:5px 0;
+  }
+  li .secondary .title {
+    font-size: 14px;
+  }
+
+  .menu-footer {
+    transform: translate(15%, 63%)!important;
+    height:250px;
+  }
+
+  .menu-footer-text {
+    top: 46px;
+    margin-block: 0;
 
     sup {
       font-size: 36px;

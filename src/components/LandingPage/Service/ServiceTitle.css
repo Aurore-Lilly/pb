@@ -89,7 +89,7 @@
     } 
 }
 
-@media (min-width: 800px){
+@media (min-width: 768px){
     .services-style {
         & .service-title {
             h3{

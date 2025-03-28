@@ -22,8 +22,8 @@
 .service-list {
   p {
     text-transform: uppercase;
-    font-size: 20px;
-
+    font-size: 18px;
+    margin: auto;
   }
 }
 /* Hero Image */
@@ -186,6 +186,12 @@ p.other-service {
   transform: translateX(5px);
 }
 
+
+@media (max-width:767px){
+  .detail-title{
+    font-size: 6rem;
+  }
+}
 
 /* Medium Screens (Tablets) */
 @media (min-width: 768px) {
