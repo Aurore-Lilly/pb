@@ -7,15 +7,17 @@
 
 .scroll-to-top {
   display: flex;
-  margin:0 10px;
+  margin: 0 10px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   background: none;
   border: none;
-  font-size: 12px; /* Adjust size */
+  font-size: 12px;
+  position: relative;
+  bottom: 22px;
   cursor: pointer;
-  color: var(--red); /* Make sure it's visible */
+  color: var(--red);
   transition: opacity 0.3s ease-in-out;
 
   span {

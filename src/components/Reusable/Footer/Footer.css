@@ -57,6 +57,7 @@
 .footer-bottom {
   background-color: var(--white);
   padding:20px;
+  height:8vh;
   flex-grow: 1; /* Allow this section to grow to match the height of footer-top */
 }
 
@@ -73,6 +74,7 @@
 @media (max-width: 400px) {
   .footer-top {
     padding: 5px;
+    flex-wrap: wrap;
   }
 
   .footer-nav a {
@@ -80,7 +82,7 @@
   }
 
   .design-cred h1 {
-    font-size: 14px;
+    font-size: 18px;
   }
 }
 

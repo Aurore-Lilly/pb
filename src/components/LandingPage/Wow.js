@@ -71,15 +71,17 @@ const WowText = () => {
   return (
     <div className="layer" ref={containerRef}>
       <div className="layer-title">
-        <span className="text">
-          <span className="entoure">Photographe </span><em
+        <span className="text"><div className="inline">
+          <span className="entoure">Photographe </span>
+          
+          <em
               ref={(el) => (circleRefs.current[0] = el)}
               className="circle-image"
               style={{
                 backgroundImage:
                   "url(https://res.cloudinary.com/aurore/image/upload/v1652359457/Pauline/image00015_bi9cpx.jpg)",
               }}
-            ></em>
+            ></em></div>
           <br />
           <div className="inline">
             <span> de </span>
@@ -92,18 +94,25 @@ const WowText = () => {
               }}
             ></em>
             <span className="big"> passion </span>
-             
+             <br />
             <span> qui </span>
-            <span> raconte </span>
+            
             <br />
           </div>
 
           <div className="inline">
+          <span> raconte </span>
             <span> votre </span>
             
             <span className="italic"> histoire </span>
-            <span> en </span>
-<em
+            
+           
+          </div>
+
+          <br />
+
+          <div className="inline">
+          <em
               ref={(el) => (circleRefs.current[2] = el)}
               className="circle-image"
               style={{
@@ -111,15 +120,9 @@ const WowText = () => {
                   "url(https://res.cloudinary.com/aurore/image/upload/v1643214986/Pauline/image00026_bqn7tf.jpg)",
               }}
             ></em>
-           
-          </div>
-
-          <br />
-
-          <div className="inline">
-            
-          </div>
-          <span className="big italic"> images </span>
+            <span> en </span>
+          
+          <span className="big italic"> images </span></div>
         </span>
       </div>
     </div>
