@@ -90,6 +90,13 @@
 }
 
 @media (min-width: 768px){
+    .main-page {
+    .title-content{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        max-width: 90vw;
+    }  
     .services-style {
         & .service-title {
             h3{
@@ -113,13 +120,7 @@
             gap:0;
         }
     }
-
-    .main-page{
-        .title-content{
-            flex-direction: row;
-        }
     }
-
 }
 
 @media (min-width:1024px){

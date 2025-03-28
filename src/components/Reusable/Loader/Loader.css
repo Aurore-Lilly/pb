@@ -44,9 +44,9 @@
 
 .progress-bar-container {
   width: 50%;
-  height: 6px;
+  height: 2px;
   background-color: var(--hot);
-  border: 1px solid var(--white);
+  border: .5px solid var(--white);
   margin-top: 20px;
   overflow: hidden;
 }

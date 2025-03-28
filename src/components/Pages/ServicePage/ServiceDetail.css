@@ -186,6 +186,27 @@ p.other-service {
   transform: translateX(5px);
 }
 
+@media (max-width:430px){
+  .link-with-arrow {
+    font-size: 14px;
+  }
+  .other-services{
+    height:12vh;
+  }
+}
+.service-list{
+  p{
+    max-width: 85vw;
+  }
+}
+.flip-gallery{
+  height: 80vh;
+}
+.flip-gallery img {
+  object-fit: cover;
+  margin: auto;
+  align-self: center;
+}
 
 @media (max-width:767px){
   .detail-title{
@@ -218,7 +239,7 @@ p.other-service {
 }
 
 /* Large Screens (Desktops) */
-@media (min-width: 968px) {
+@media (min-width: 868px) {
 
   .other-services{
     position: absolute;

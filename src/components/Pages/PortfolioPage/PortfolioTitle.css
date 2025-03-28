@@ -24,8 +24,6 @@
 .portfolio-heading {
   position: absolute;
   top: 8.5%;
-  left: 50%;
-  transform: translateX(-50%);
   font-size: clamp(8rem, 9vw, 10rem);
   font-weight: 400;
   background: none;

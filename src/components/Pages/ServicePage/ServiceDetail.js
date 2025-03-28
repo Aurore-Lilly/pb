@@ -6,6 +6,8 @@ import Hamburger from '../../Reusable/Header/Hamburger';
 import ToggleButton from '../../Reusable/Header/ToggleButton';
 import './ServiceDetail.css';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import Footer from '../../Reusable/Footer/Footer';
+import ScrollToTop from '../../Reusable/ScrollToTop/ScrollToTop';
 
 const ServiceDetail = () => {
   const { slug } = useParams();
@@ -140,6 +142,8 @@ const ServiceDetail = () => {
           </ul>
         </div>
       </div>
+      <ScrollToTop />
+      <Footer />
     </section>
   );
 };
