@@ -68,12 +68,21 @@
         display: flex;
         align-items: center;
         flex-direction: column;
-        gap: 20px;
+        text-align: center;
+        gap: 0px;
         max-width: 90vw;
+        width:90vw;
     }  
     .service-title{
         margin-top: 20px;
-        margin-bottom: 50px;
+        margin-bottom: 80px;
+    }
+    .service-title h3,
+    .service-title p {
+        text-align: center; /* Ensure text is centered */
+        width: 90%;
+        left: auto;
+        transform: none;
     }
 }
 

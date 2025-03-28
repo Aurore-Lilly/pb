@@ -167,12 +167,12 @@
   height: 350px;
   border-radius: 50%;
   left: 0;
-  transform: translate(56%, 50%) ;
+  transform: translate(56%, 58%) ;
 }
 
 .menu-footer-text {
   font-size: 46px;
-  top: 50px;
+  top: 30px;
   font-style: normal;
   color: var(--red);
   position: relative;
@@ -213,7 +213,7 @@
 @media (max-width: 768px) {
   .menu-footer {
     width: 75%;
-    transform: translate(15%, 50%)
+    transform: translate(15%, 58%)
   }
 
   .menu-content {

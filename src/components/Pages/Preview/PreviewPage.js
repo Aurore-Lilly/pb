@@ -6,7 +6,6 @@ import ImageHero from '../../Reusable/ImageHero';
 import Service from '../../LandingPage/Service/Service';
 import GetInTouch from '../../Reusable/GetInTouch/GetInTouch';
 import Footer from '../../Reusable/Footer/Footer';
-import ScrollToTop from '../../Reusable/ScrollToTop/ScrollToTop';
 import { fetchEntries } from '../../../contentful/ContentfulClient'; // Ensure you have your contentful client set up
 import Loader from '../../Reusable/Loader/Loader';
 
@@ -50,7 +49,6 @@ const PreviewPage = () => {
       <GetInTouch content={previewData} />
       
       <Footer />
-      <ScrollToTop />
     </div>
   );
 };

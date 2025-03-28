@@ -5,16 +5,15 @@ import './Hamburger.css';
 
 const Hamburger = ({ isOpen, toggleMenu }) => {
   useEffect(() => {
-    if (isOpen) {
-      gsap.to('.menu', { clipPath: 'circle(150% at 50% 0%)', duration: 0.4, ease: 'power3.inOut' });
-      gsap.to('.menu-content', { opacity: 1, duration: 0.5, ease: 'power3.inOut' });
-      gsap.fromTo('.menu-footer', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 2, delay: 1.6, ease: 'power3.inOut' });
-      gsap.fromTo('.menu-list li', { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 0.75, stagger: 0.2, ease: 'power3.inOut' });
-    } else {
-      gsap.to('.menu', { clipPath: 'circle(0% at 0% 0%)', duration: 0.1, ease: 'power3.inOut' });
-      gsap.to('.menu-content', { opacity: 0, duration: 0.1, ease: 'power3.inOut' });
-    }
-  }, [isOpen]);
+  if (isOpen) {
+    gsap.to('.menu', { clipPath: 'circle(150% at 50% 0%)', duration: 0.4, ease: 'power3.inOut' });
+    gsap.to('.menu-content', { opacity: 1, duration: 0.5, ease: 'power3.inOut' });
+    gsap.fromTo('.menu-list li', { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 0.75, stagger: 0.2, ease: 'power3.inOut' });
+  } else {
+    gsap.to('.menu', { clipPath: 'circle(0% at 0% 0%)', duration: 0.1, ease: 'power3.inOut' });
+    gsap.to('.menu-content', { opacity: 0, duration: 0.1, ease: 'power3.inOut' });
+  }
+}, [isOpen]);
 
   // Function to scroll to top on link click
   const handleLinkClick = () => {

@@ -48,7 +48,7 @@ const ServiceTitle = () => {
       <div className='title-content'>
         <h3 className='cursive'>{data?.fields?.title || 'Default Title'}</h3>
         {richTextDocument ? (
-          <div>{documentToReactComponents(richTextDocument, options)}</div>
+          <div className='title-text'>{documentToReactComponents(richTextDocument, options)}</div>
         ) : (
           <p>No rich text available</p>
         )}

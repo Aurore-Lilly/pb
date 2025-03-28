@@ -22,7 +22,8 @@
 
 /* Portfolio Title (Large, Overlay) */
 .portfolio-heading {
-  position: absolute;
+  position: relative;
+  margin: auto;
   top: 8.5%;
   font-size: clamp(8rem, 9vw, 10rem);
   font-weight: 400;
@@ -123,6 +124,15 @@
   }
   .portfolio-text-container{
     max-width: 90vw;
+  }
+
+  .portfolio-title-wrapper {
+    height: 120vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
 }
 

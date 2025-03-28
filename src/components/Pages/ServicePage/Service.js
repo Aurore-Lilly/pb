@@ -8,7 +8,6 @@ import { useLocation } from 'react-router-dom';
 import ServiceCard from './ServiceCard';
 import useScrollChange from '../../../hooks/useScrollChange';
 import Footer from '../../Reusable/Footer/Footer';
-import ScrollToTop from '../../Reusable/ScrollToTop/ScrollToTop';
 import GetInTouch from '../../Reusable/GetInTouch/GetInTouch';
 
 const ServicePage = () => {
@@ -57,7 +56,6 @@ const ServicePage = () => {
 
       <GetInTouch />
       <Footer />
-      <ScrollToTop />
     </div>
   );
 };

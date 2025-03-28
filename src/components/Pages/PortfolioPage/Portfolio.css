@@ -272,6 +272,7 @@
 @media (max-width: 680px) {
   .portfolio-collage {
     grid-template-columns: repeat(1, 1fr);
+    margin: 120px auto;
   }
 }
 

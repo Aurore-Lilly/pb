@@ -72,15 +72,7 @@ const WowText = () => {
     <div className="layer" ref={containerRef}>
       <div className="layer-title">
         <span className="text">
-          <span className="entoure">Photographe </span>
-          <br />
-          <div className="inline">
-            <span> de </span>
-            <span className="big"> passion </span>
-            <span> qui </span>
-            <span> créée </span>
-
-            <em
+          <span className="entoure">Photographe </span><em
               ref={(el) => (circleRefs.current[0] = el)}
               className="circle-image"
               style={{
@@ -88,11 +80,9 @@ const WowText = () => {
                   "url(https://res.cloudinary.com/aurore/image/upload/v1652359457/Pauline/image00015_bi9cpx.jpg)",
               }}
             ></em>
-            <br />
-          </div>
-
+          <br />
           <div className="inline">
-            <span> des </span>
+            <span> de </span>
             <em
               ref={(el) => (circleRefs.current[1] = el)}
               className="circle-image"
@@ -101,16 +91,19 @@ const WowText = () => {
                   "url(https://res.cloudinary.com/aurore/image/upload/v1652359466/Pauline/image00002_kqgn41.jpg)",
               }}
             ></em>
-            <span className="italic"> images </span>
-            <span> au </span>
-            <span>  travers </span>
+            <span className="big"> passion </span>
+             
+            <span> qui </span>
+            <span> raconte </span>
+            <br />
           </div>
 
-          <br />
-
           <div className="inline">
-            <span> desquelles </span>
-            <em
+            <span> votre </span>
+            
+            <span className="italic"> histoire </span>
+            <span> en </span>
+<em
               ref={(el) => (circleRefs.current[2] = el)}
               className="circle-image"
               style={{
@@ -118,9 +111,15 @@ const WowText = () => {
                   "url(https://res.cloudinary.com/aurore/image/upload/v1643214986/Pauline/image00026_bqn7tf.jpg)",
               }}
             ></em>
+           
           </div>
+
           <br />
-          <span> vous </span> <span> vous </span> <span className="big italic"> exprimez</span>
+
+          <div className="inline">
+            
+          </div>
+          <span className="big italic"> images </span>
         </span>
       </div>
     </div>

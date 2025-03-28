@@ -18,7 +18,6 @@ const MainPage = () => {
   const LazyService = React.lazy(() => import('../../LandingPage/Service/Service'));
   const LazyGetInTouch = React.lazy(() => import('../../Reusable/GetInTouch/GetInTouch'));
   const LazyFooter = React.lazy(() => import('../../Reusable/Footer/Footer'));
-  const LazyScrollToTop = React.lazy(() => import('../../Reusable/ScrollToTop/ScrollToTop'));
   const LazyTestimonialSlider = React.lazy(() => import('../../Testimonials/Testimonials'));
 
   return (
@@ -50,9 +49,6 @@ const MainPage = () => {
           </React.Suspense>
           <React.Suspense fallback={<div>Loading Footer...</div>}>
             <LazyFooter />
-          </React.Suspense>
-          <React.Suspense fallback={<div>Loading ScrollToTop...</div>}>
-            <LazyScrollToTop />
           </React.Suspense>
         </div>
       )}
