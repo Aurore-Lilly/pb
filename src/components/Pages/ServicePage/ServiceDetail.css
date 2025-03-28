@@ -1,0 +1,382 @@
+.service-detail {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.first {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* General styling for full-width sections */
+.detail-hero,
+.service-list,
+.small-picture {
+  width: 100%;
+}
+
+.service-list {
+  p {
+    text-transform: uppercase;
+    font-size: 20px;
+
+  }
+}
+/* Hero Image */
+.detail-hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+/* Title Styling */
+.detail-title {
+  position: absolute;
+  bottom: -4%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  text-transform: capitalize;
+  color: var(--white);
+  font-size: 9rem;
+  margin: 0;
+  text-shadow: 3px 3px #000;
+  padding: 0;
+  background: none;
+  z-index: 1;
+}
+
+/* Flip Gallery */
+.flip-gallery {
+  position: relative;
+  width: 100%;
+  height: 950px; /* Set a height for proper scaling */
+  overflow: hidden;
+}
+
+.flip-gallery img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  opacity: 0;
+}
+
+/* Service List */
+.service-list {
+  background-color: var(--pink);
+  height: 80vh;
+  text-align: center;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Layout Adjustments */
+.service-layout {
+  display: grid;
+  width:100vw;
+  grid-template-columns: 1fr;
+  gap: 0px;
+}
+
+/* Small Screens - Hide Small Picture */
+.small-photo {
+  visibility: hidden;
+}
+
+.small-picture {
+  display: none;
+  visibility: hidden;
+}
+
+.star {
+  margin: 0;
+  position: absolute;
+  z-index: 99;
+  font-size: 200px;
+  left: -2%;
+  bottom: -92%;
+
+  & h3 {
+    -webkit-text-stroke-width: 2px;
+    color: var(--white);
+    font-size: 120px;
+    font-weight: 400;
+    margin:0;
+    -webkit-text-stroke-color: var(--hot);
+  }
+}
+
+
+
+.other-services {
+  width:100vw;
+  text-align: left;
+  bottom:0;
+  justify-content: flex-end;
+  align-items: center;
+  display:flex;
+  flex-direction: row;
+  right:0;
+  color:var(--white);
+  background-color: var(--white);
+  border-top: 1px solid var(--red);
+  z-index: 99;
+}
+
+p.other-service {
+  color: var(--red);
+  font-weight: 400;
+}
+
+.other-services h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.other-services ul {
+  list-style: none;
+  padding: 0;
+  margin:0px 8px;
+
+  li{
+    background-color: transparent;
+  }
+}
+
+.service-link {
+  margin-bottom: 10px;
+}
+
+
+.link-with-arrow {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--black);
+}
+
+.arrow-icon {
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.link-with-arrow:hover .arrow-icon {
+  transform: translateX(5px);
+}
+
+
+/* Medium Screens (Tablets) */
+@media (min-width: 768px) {
+  .service-layout {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 0px;
+    align-items: end;
+  }
+
+  .gallery-list-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .flip-gallery {
+    width: 100%;
+  }
+
+  .service-list {
+    width: 100%;
+  }
+}
+
+/* Large Screens (Desktops) */
+@media (min-width: 968px) {
+
+  .other-services{
+    position: absolute;
+    width:50vw;
+    padding:0;
+  }
+  .detail-hero {
+    width: 50vw;
+    border-right:2px solid var(--white);
+  }
+
+  .service-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0px;
+    align-items: start;
+    overflow: hidden;
+  }
+
+  .first {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 auto;
+  }
+
+  /* Small Picture */
+  .small-picture {
+    position: relative;
+    display: none;
+  }
+
+  .small-photo {
+    position: relative;
+    display: block;
+    bottom: 0;
+    right: 0;
+    height: auto;
+  }
+
+  /* Keep Flip Gallery & Service List in Same Column */
+  .gallery-list-container {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flip-gallery {
+    top: 0;
+    position: absolute;
+    width: 35vw;
+    right: 0;
+    height: 57vh;
+  }
+
+  .service-list {
+    list-style: none;
+    display: block;
+    position: absolute;
+    height: 40vh;
+    bottom: 0;
+    width: 50vw;
+
+    &:first-child{
+      padding-top: 25px;
+    }
+
+    >*{
+      color:var(--red);
+      padding:20px;
+    }
+  }
+  .first-el{
+    height: 50vh;
+  }
+  .second-el{
+    height: 50vh;
+  }
+
+  .star{
+    left: 47%;
+    bottom: 29%;
+
+    & h3 {
+      font-size: 140px;
+    }
+  }
+}
+
+@media (min-width:968px) and (max-width: 1284px){
+  .flip-gallery{
+    left:50%;
+  }
+}
+
+/* Extra Large Screens */
+@media (min-width:1284px) {
+  .service-layout{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .first {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .flip-gallery {
+    width: 22vw;
+    right:0!important;
+    height:52vh;
+  }
+
+  .small-picture {
+    width: 100%;
+    display: block;
+  }
+
+  .small-photo {
+    justify-self: center;
+    transform: translate(0%, 7.5%);
+    width: 25vw;
+    object-fit: contain;
+    text-align: center;
+    height: 45vh;
+    visibility: visible;
+  }
+
+  .service-list {
+    height: 45vh;
+    padding: 0;
+    list-style: none;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 50vw;  
+    .rich-text-paragraph {
+      font-weight: 200;
+    }
+  }
+
+
+    
+
+  .detail-hero {
+    width: 50vw;
+  }
+
+  /* Ensure gallery and list stay in the same column */
+  .gallery-list-container {
+    width: 28vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .star{
+    left: 49%;
+    bottom: 33%;
+
+    & h3{
+      font-size: 160px;
+    }
+    }
+  }

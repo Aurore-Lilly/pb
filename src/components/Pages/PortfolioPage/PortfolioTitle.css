@@ -1,0 +1,135 @@
+/* Main Container */
+.portfolio-title {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--red);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.portfolio-title-wrapper {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Portfolio Title (Large, Overlay) */
+.portfolio-heading {
+  position: absolute;
+  top: 8.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(8rem, 9vw, 10rem);
+  font-weight: 400;
+  background: none;
+  margin-block-start: 0;
+  text-align: center;
+  color: var(--pink);
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: var(--black);
+  z-index: 5;
+}
+
+/* Background Image */
+.hero-background-portfolio {
+  width:100%;
+  margin:auto;
+  padding: 10% 5% 5%;
+  position: relative;
+  box-sizing: border-box;
+  background-color:var(--white);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+}
+.hero-background-portfolio img {
+  width: 100%;
+	height:auto;
+	display: block;
+	z-index: 1;
+}
+
+.hero-background-portfolio:before,
+.hero-background-portfolio:after {
+  content: '';
+	width: 100%;
+	left: 0;
+	position: absolute;
+}
+
+.hero-background-portfolio:before {
+  height: 4%;
+	bottom: -4%;
+	background-repeat: no-repeat;
+	background-image: linear-gradient(177deg, rgba(0,0,0,0.22) 10%, transparent 50%), linear-gradient(-177deg, rgba(0,0,0,0.22) 10%, transparent 50%);
+	background-size: 49% 100%;
+	background-position: 2% 0, 98% 0;
+}
+
+.hero-background-portfolio:after {
+  height: 100%;
+	top: 0;
+	z-index: 2;
+	background-repeat: no-repeat;
+	background-image: linear-gradient(to right, rgba(255,255,255,0.1) 0.5%, rgba(0,0,0,0.15) 1.2%, transparent 1.2%), linear-gradient(to bottom, rgba(255,255,255,0.1) 0.5%, rgba(0,0,0,0.15) 1.2%, transparent 1.2%), linear-gradient(to bottom, rgba(255,255,255,0.1) 0.5%, rgba(0,0,0,0.15) 1.2%, transparent 1.2%), linear-gradient(265deg, rgba(0,0,0,0.2), transparent 10%), linear-gradient(5deg, rgba(0,0,0,0.2), transparent 15%), linear-gradient(-5deg, rgba(0,0,0,0.1), transparent 10%), linear-gradient(5deg, rgba(0,0,0,0.1), transparent 10%), linear-gradient(-265deg, rgba(0,0,0,0.2), transparent 10%), linear-gradient(-5deg, rgba(0,0,0,0.2), transparent 15%), linear-gradient(266deg, rgba(0,0,0,0.2), transparent 10%);
+	background-size: 50% 100%, 100% 33.3333%, 100% 33.3333%, 50% 33.3333%, 50% 33.3333%, 50% 33.3333%, 50% 33.3333%, 50% 33.3333%, 50% 33.3333%, 50% 33.3333%;
+	background-position: right top, left center, left bottom, left top, left top, right top, left center, right center, right center, left bottom;
+}
+
+.hero-portfolio {
+  width: 100%;
+  height: auto;
+  max-height: 625px;
+  object-fit: contain;
+  z-index: 4;
+}
+
+/* Text Container */
+.portfolio-text-container {
+  position: absolute;
+
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%; /* Prevents stretching */
+  text-align: center;
+  color: var(--white);
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.subtext {
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.6;
+  width:70vw; /* Keeps alignment proper */
+  margin: 0 auto; /* Ensures it is centered */
+  text-align: center;
+  color:white;
+}
+
+
+@media (min-width: 800px){
+  .subtext{
+    max-width:55vw;
+  }
+}
+
+@media (min-width:1324px){
+  .subtext{
+    max-width:37vw;
+  }
+}
+
+
+@media (min-width: 1524px){
+  .subtext{
+    max-width: 32vw;
+  }
+}

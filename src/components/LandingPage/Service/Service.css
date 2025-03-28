@@ -1,0 +1,244 @@
+
+.services {
+  display: block;
+  background-color: var(--white);
+  width: 100vw;
+  padding:80px 0;
+  padding-top: 0;
+  position: relative;
+  justify-items: center;
+  justify-self: center;
+
+  .small-img{
+    display:none;
+  }
+
+  .service-title {
+
+    position: relative;
+    h3{
+      font-size: 80px;
+      margin:0;
+    }
+
+    p{
+      margin: auto;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      color: var(--red);
+      font-family: 'cursive';
+      text-transform: uppercase;
+      font-size: 15px;
+      position: relative;
+    }
+  }
+}
+
+.service-card {
+  display: grid;
+  position:relative;
+  gap: 48px;
+  max-width: 800px; /* Keeps the grid centered */
+  width: 90vw;
+  margin: 0 auto; /* Centers the grid */
+  grid-template-columns: 1fr; /* Default for mobile */
+  justify-content: center; /* Centers items in grid */
+}
+
+.portrait-component {
+  position:relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.portrait-container {
+  position: relative;
+  width: 100%;
+  height: 650px; /* Set a fixed height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Ensures no overflow issues */
+}
+
+.image-title {
+    position: absolute;
+    font-weight: 900;
+    margin: auto;
+    line-height: 30px;
+    text-align: center;
+    font-size: 22px;
+    z-index: 2;
+    left: 1px;
+    color: var(--red);
+    text-transform: uppercase;
+    padding:0 5px;
+    background: linear-gradient(to top, var(--pink) 50%, transparent 50%);
+    left: 0;
+    top:-30px;
+
+
+  & .num {
+    font-size: 50px;
+    color: var(--red);
+    text-transform: uppercase;
+  }
+}
+.tag-container {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2;
+}
+
+.tag {
+  z-index:2;
+  border-radius: 50px;
+  border:1.5px solid var(--red);
+  text-transform: uppercase;
+  color:var(--red);
+  padding:5px 15px;
+  text-align:center;
+  font-weight: 400;
+  display: inline-block;
+  padding: 5px;
+  background-color:var(--white);
+  margin: 5px;
+  font-size: 12px;
+}
+
+.background-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  display: block;
+  border: 1px solid var(--black); /* Border applied to the container */
+  box-sizing: border-box; /* Prevents border from being covered by image */
+}
+
+.background-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Makes sure it covers the container */
+  z-index: 1;
+  opacity:.8;
+  display: block;
+}
+
+.img-front {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  height:auto;
+  width: 70%;
+  max-width: 325px;
+  border: 2px solid rgb(268, 280, 250);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.img-front img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .service-card {
+    grid-template-columns: 1fr 1fr; /* Two columns for tablet */
+    gap:20px;
+
+    .portrait-container {
+      height:650px;
+    }
+  }
+  .image-title{
+    font-size: 28px;
+  }
+
+  .tag {
+    font-size: 14px;
+    padding:5px 10px;
+  }
+
+  /* Make the first card take full width */
+  .service-card .portrait-component:first-child {
+    grid-column: span 2;
+    margin-bottom: 60px;
+
+      .portrait-container {
+        height:650px;
+    }
+  }
+  .services {
+    .service-title {
+      flex-direction: row;
+      width:90%;
+      margin:0;
+      max-width:800px;
+      display: flex;
+      align-items: center;
+      margin: 120px 40px 140px;
+
+      p{
+        font-size: 17px;
+        margin:0;
+        text-align: justify;
+        border-left: 2px solid var(--red);
+        padding:10px 0px 10px 40px;
+      }
+      h3{
+        margin:0;
+        padding-right: 40px;
+      }    
+    }
+  }
+
+}
+
+@media (min-width: 1360px) {
+  .service-card .portrait-component:first-child {
+    grid-column: span 1;
+
+    .portrait-container {
+      height:650px;
+    }
+  }
+  .service-card {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap:20px;
+    max-width:1400px;
+  }
+  .services {
+    .service-title {
+      flex-direction: row;
+      width:60%;
+      max-width:1200px;
+      display: flex;
+      justify-items: left;
+      margin:200px 40px ;
+      gap: 60px;
+    
+      p{
+        margin:0;
+        text-align: justify;
+        border-left: 2px solid var(--red);
+        padding:10px 0px 10px 60px;
+      }
+      h3{
+        margin:0;
+        font-size: 100px;
+      }
+    }
+  }
+}

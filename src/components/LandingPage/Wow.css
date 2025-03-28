@@ -1,0 +1,95 @@
+/* Layer styling */
+.layer {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  width: 100vw;
+  height: 80vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--white);
+  overflow: hidden;
+}
+
+/* Layer Title */
+.layer-title {
+  position: relative;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Text styles */
+.text {
+  position: absolute;
+  font-family: "Inter Tight", sans-serif;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--red);
+  text-align: center;
+  align-self: center;
+  color: var(--pink);
+  justify-self: center;
+  font-size: clamp(2.6rem, 5vw, 5rem);
+  line-height: 4rem;
+}
+
+/* Responsive text */
+@media screen and (min-width: 668px) {
+  .text {
+    font-size: clamp(3.6rem, 6vw, 6rem);
+    line-height: 5.5rem;
+  }
+}
+
+@media screen and (min-width:768px){
+    .circle-image.visible {
+        width:100px;
+        height:100px;
+    }
+    .layer {
+        height:100vh;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+  .text {
+    width: 72%;
+    line-height: 7rem;
+  }
+}
+
+.inline {
+    display: inline-flex;
+    align-items: center;
+
+    span {
+        margin: 0 10px;
+    }
+}
+
+/* Circle images */
+.circle-image {
+  display: inline-flex;
+  position: relative;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  transition: all 1s ease-in-out;
+  opacity: 0;
+  border: 1px solid var(--red);
+  transform: scale(0);
+  margin: 0 clamp(0.2rem, 1vw, 1.2rem);
+}
+
+.circle-image.visible {
+  width: 65px;
+  display: inline-flex;
+  height: 65px;
+  opacity: 1;
+  transform: scale(1);
+}

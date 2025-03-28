@@ -1,38 +1,137 @@
+
+:root {
+  --red: #F20E0E;
+  --lilac: #d9cbf5;
+  --pink: #FDCBE2;
+  --hot: #ff4081;
+  --white: #F8F7DF;
+  --black: #842a12;
+}
+a  {
+  text-decoration: none;
+  cursor:pointer;
+}
+
+button{
+  cursor:pointer;
+}
+
+@font-face {
+  font-family: "cursive";
+  src: url("./fonts/thesecretthings-webfont.woff2") format("opentype");
+  font-display: swap;
+}
+
+
+.inter {
+  font-family: "Inter Tight", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.cursive {
+  font-family: "cursive";
+  font-weight: 400;
+  font-style: normal;
+}
+.contrail {
+  font-family: "Contrail One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+  font-family: 'cursive'; 
+  font-weight: 500;
+  color:var(--red);
+  background: linear-gradient(to top, var(--pink) 50%, transparent 50%);
+}
+
+h2{
+  font-family: "Inter Tight", sans-serif; 
+  font-size: 18px;
+}
+
+
+h3 {
+  font-family: "Contrail One", sans-serif;
+  color:var(--pink);
+  font-size: 60px;
+  font-weight: 400;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--red);  
+}
+
+h5 {
+  font-family: 'cursive';
+}
+
+p{
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 500;
+  line-height: 1.6em;
+  font-size: 15px;
+}
+
+p.cursive {
+  text-transform: uppercase;
+}
+
 .App {
+  font-family: sans-serif;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Ensure the body takes up the full viewport height */
+  scroll-behavior: auto!important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body {
+  background-color: var(--white);
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+
+title {
+  color: var(--red)!important;
+}
+.italic {
+  font-style: italic;
+}
+
+
+@media (max-width:400px){
+  p{
+    font-size: 15px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (min-width: 768px){
+  section {
+    &.services {
+      padding:80px 0;
+    }  
+
+    p {
+      font-size: 16px;
+    }
   }
-  to {
-    transform: rotate(360deg);
+
+  .cookie-div {
+    flex-direction: row;
   }
 }
+
+@media (min-width:1024px){
+  p{
+    font-size: 18px;
+  }
+}
+
+

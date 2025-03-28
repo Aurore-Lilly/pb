@@ -1,0 +1,52 @@
+
+.service-page{
+
+    .landing-header.scrolled{
+        .logo{
+            color: var(--red);
+            p{
+                color: var(--red);
+            }
+        }   
+    }
+
+}
+
+
+
+.services-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin: auto;
+    margin-top: 95vh; /* Pushes services below header and title */
+    margin-bottom: 20vh;
+    position: relative;
+    z-index: 1;
+    width:90vw;
+    
+}
+
+@media (max-width:868px){
+    .services-cards-container{
+        margin-top: 110vh;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width:869px){
+    .services-cards-container{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width:1024px){
+    .services-cards-container{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+

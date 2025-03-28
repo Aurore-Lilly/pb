@@ -1,0 +1,278 @@
+
+.section.hero {
+  z-index: 5;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.landing-content{
+  width: 100%;
+}
+.landing-page {
+  color: var(--red);
+}
+.landing-content {
+  height: 50%;
+  width: 100vw;
+  z-index: 99;
+  display: flex;
+  left: 0;
+  top: 0;
+}
+.landing-content h2 {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+
+.presentation {
+  opacity: 1;
+  text-align: center;
+  width:100%;
+  flex-direction: column;
+  align-items: center;
+  height:60vh;
+  justify-content: center;
+  display: flex;
+
+
+  & .landing-title{
+    margin:0;
+    font-weight: 100;
+    font-style:normal;
+    font-size: 65px;
+    line-height: 1.4em;
+    font-style: italic;
+    color: var(--red);
+    & sup {
+      font-weight: 300;
+      font-size: 65px;
+      font-style: normal;
+    } 
+  }
+  & p {
+    font-size: 18px;
+    line-height: 1rem;
+    width: 17em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  & a {
+    margin-top: 3em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color:var(--red);
+    font-size: 18px;
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--red);
+    padding:0 10px;
+  }
+
+  & mark {
+    margin-top: 2.2em;
+    background: linear-gradient(to top, var(--pink) 50%, transparent 50%);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+}
+
+
+ 
+.image-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.landing-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow:hidden;
+  gap:15px;
+  width:110vw;
+}
+.image-column {
+  display:flex;
+  flex: 1 1 calc(33.333% - 25px); /* Adjust width and spacing */
+  margin-bottom: 0px;
+  position: relative;
+  overflow:hidden;
+}
+.image-column img {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  min-width: 33vw;
+  overflow:hidden;
+
+}
+
+@media (max-width:400px){
+
+  .image-hero {
+    display: flex;
+    width:100vw;
+    flex-wrap: wrap;
+    overflow: hidden;
+    flex-direction: column;
+    align-content: center;
+    margin: auto;
+  }
+
+  .landing-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    gap:0 15px;
+
+}
+
+  .presentation {
+    & .landing-title{
+      font-size:45px;
+
+      & sup {
+          font-size: 45px;
+      }
+      & span {
+        font-size: 60px;
+      }
+    }
+
+    & p {
+      font-size: 10px;
+    }
+  }
+}
+
+@media (max-width: 400px){
+  .presentation {
+    & a {
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width:868px){
+   .section-hero{
+      padding:0;
+      margin:0;
+  }
+  .landing-content{
+    padding:0;
+  }
+}
+
+
+@media (min-width: 868px) {
+  .landing-content{
+    position:absolute;
+  }
+  .section-hero {
+    position: relative;
+    width:100vw;
+    margin:0;
+    padding:0;
+  }
+  .section-hero.static{    
+    z-index: 4;
+    width: 100%;
+    position: static;
+    height: auto;
+    margin-bottom: 200vh
+  }
+  .presentation {
+    background-color: var(--white);
+    width:100%;
+    height:56vh;
+    min-width: 100%;
+  }
+  .image-hero{
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: fixed;
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+    overflow: hidden;
+  }
+
+  .image-column{
+    display: flex;
+    min-height: 50vh;
+  }
+
+  .image-column img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+  }
+
+  .banners {
+    z-index:999;
+    position:absolute;
+}
+}
+
+
+@media (min-width: 1024px){
+  .presentation {
+    height:52vh;
+    & .landing-title{
+        font-size: 80px;
+      & sup {
+        font-size: 80px;
+      } 
+    }    
+  }
+  .image-column{
+    height:50vh;
+  }
+
+  .landing-images{
+    width:102vw;
+    gap:30px;
+  }
+}
+
+@media (min-width: 1424px){
+  .presentation {
+    height:100vh;
+    & .landing-title{
+      font-size: 120px;
+      & sup {
+        font-size: 120px;
+      } 
+    }    
+  }
+  .landing-images {
+    gap:5px;
+    width:110vw;
+  }
+  .image-column{
+    height: 100vh;
+    flex: 1 1 calc(25% - 5px); /* Adjust width and spacing */
+    width:100vw;
+    justify-content:center;
+    justify-items: center;
+  }
+  .image-column img {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover; 
+  }
+  .section-hero.static {
+    margin-bottom:300vh;
+  }
+}
+
+

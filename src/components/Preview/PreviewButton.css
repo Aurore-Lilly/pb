@@ -1,0 +1,17 @@
+.preview-button {
+  position: absolute;
+  border: 1px solid var(--white);
+  padding: 12px 12px 12px 4px !important;
+  z-index: 999;
+  background: var(--hot) !important;
+  color: var(--white) !important;
+  position: absolute;
+  border-radius: 0;
+  border-radius: 0 !important;
+  bottom: 48%;
+  left: 0;
+  /* font-size: 12px !important; */
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+  margin: 0 !important;
+}
