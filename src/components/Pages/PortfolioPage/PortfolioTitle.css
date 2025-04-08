@@ -121,7 +121,7 @@
 
   .portfolio-heading{
     top:12%;
-    font-size: clamp(7rem, 9vw, 8rem);
+    font-size: clamp(5rem, 9vw, 8rem);
   }
   .portfolio-text-container{
     max-width: 80vw;
