@@ -9,9 +9,11 @@ const TestimonialSlider = () => {
   const [testimonials, setTestimonials] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [error, setError] = useState(null);
+  const [isPaused, setIsPaused] = useState(false); // Track if the cycle is paused
 
   const testimonialRef = useRef(null);
   const containerRef = useRef(null);
+  const intervalRef = useRef(null); // Track interval for clearing when paused
 
   // Fetch video & testimonials from Contentful
   useEffect(() => {
@@ -42,6 +44,8 @@ const TestimonialSlider = () => {
   useEffect(() => {
     if (testimonials.length > 0) {
       const cycleTestimonials = () => {
+        if (isPaused) return; // Don't cycle if paused
+
         const element = testimonialRef.current;
         if (!element) return;
 
@@ -56,10 +60,19 @@ const TestimonialSlider = () => {
         });
       };
 
-      const interval = setInterval(cycleTestimonials, 5000);
-      return () => clearInterval(interval);
+      // Start cycling testimonials every 5 seconds
+      intervalRef.current = setInterval(cycleTestimonials, 5000);
+
+      // Clean up interval on unmount or when paused
+      return () => clearInterval(intervalRef.current);
     }
-  }, [testimonials]);
+  }, [testimonials, isPaused]);
+
+  // Handle hover and touch events to pause/resume cycling
+  const handleMouseEnter = () => setIsPaused(true);
+  const handleMouseLeave = () => setIsPaused(false);
+  const handleTouchStart = () => setIsPaused(true);
+  const handleTouchEnd = () => setIsPaused(false);
 
   // Intersection Observer to Toggle Class on Body
   useEffect(() => {
@@ -88,7 +101,14 @@ const TestimonialSlider = () => {
   if (error) return <div className="error-message">{error}</div>;
 
   return (
-    <div ref={containerRef} className="testimonial-container">
+    <div
+      ref={containerRef}
+      className="testimonial-container"
+      onMouseEnter={handleMouseEnter} // Pause on hover
+      onMouseLeave={handleMouseLeave} // Resume on mouse leave
+      onTouchStart={handleTouchStart} // Pause on touch start (mobile)
+      onTouchEnd={handleTouchEnd} // Resume on touch end
+    >
       {videoUrl && (
         <video className="testimonial-video" autoPlay loop muted playsInline src={videoUrl}></video>
       )}
