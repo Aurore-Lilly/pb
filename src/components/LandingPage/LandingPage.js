@@ -89,11 +89,7 @@ const LandingPage = () => {
               <div className='presentation'>
                 <h5 className='landing-title'><sup>Pauline</sup> Babin</h5>
                 <p className='cursive'>{item.fields.title}</p>
-                <mark>
-                  <a href="mailto:paulinebabin@gmail.com?subject=Let's Work Together&body=Salut Pauline,%0D%0A%0D%0AJ'aimerais discuter d'un projet avec toi!" target="_blank" rel="noopener noreferrer">
-                    paulinebabin@gmail.com
-                  </a>
-                </mark>
+             
               </div>
             </section>
           </section>
