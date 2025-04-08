@@ -13,6 +13,7 @@
 
 .portfolio-title-wrapper {
   height: 100vh;
+  top:-50px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -24,7 +25,7 @@
 .portfolio-heading {
   position: relative;
   margin: auto;
-  top: 8.5%;
+  top: 12.5%;
   font-size: clamp(8rem, 9vw, 10rem);
   font-weight: 400;
   background: none;
@@ -38,9 +39,9 @@
 
 /* Background Image */
 .hero-background-portfolio {
-  width:100%;
+  width:80%;
   margin:auto;
-  padding: 10% 5% 5%;
+  padding: 7% 5% 5%;
   position: relative;
   box-sizing: border-box;
   background-color:var(--white);
@@ -83,7 +84,7 @@
 .hero-portfolio {
   width: 100%;
   height: auto;
-  max-height: 625px;
+  max-height: 500px;
   object-fit: contain;
   z-index: 4;
 }
@@ -91,10 +92,10 @@
 /* Text Container */
 .portfolio-text-container {
   position: absolute;
-
+  margin-top: 40px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%; /* Prevents stretching */
+  width: 80%; /* Prevents stretching */
   text-align: center;
   color: var(--white);
   z-index: 4;
@@ -120,18 +121,18 @@
 
   .portfolio-heading{
     top:12%;
-    font-size: clamp(6rem, 9vw, 10rem);
+    font-size: clamp(7rem, 9vw, 8rem);
   }
   .portfolio-text-container{
-    max-width: 90vw;
+    max-width: 80vw;
+    margin-top: 25px;
   }
 
   .portfolio-title-wrapper {
-    height: 120vh;
+    height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
   }
 }
@@ -147,6 +148,9 @@
 @media (min-width:1324px){
   .subtext{
     max-width:37vw;
+  }
+  .hero-portfolio {
+    max-height:525px;
   }
 }
 

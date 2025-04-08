@@ -59,6 +59,7 @@
   width: 100%;
   cursor:pointer;
   height: 100%; /* Adjusted height to be more responsive */
+  max-height: 550px;
   object-fit: cover; /* Ensure images cover the container without distorting */
   transition: opacity 0.3s ease-in-out;
 
@@ -155,23 +156,6 @@
   object-fit: cover;
 }
 
-/* Responsive Grid */
-@media (max-width: 1048px) {
-  .portfolio-archives {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
-  }
-}
-
-@media (max-width: 750px) {
-  .portfolio-archives {
-    grid-template-columns: repeat(1, 1fr); /* 1 column on small screens */
-    padding:0;
-    width:90vw;
-    position: relative;
-  }
-}
-
-/* Mobile / Small Screens: Only show the current image */
 @media (max-width: 750px) {
   .image-gallery {
     flex-direction: row; /* Stack images vertically on small screens */
@@ -183,6 +167,13 @@
     object-fit: cover;
     width: 100vw;
     height: auto; /* Adjust height to maintain aspect ratio */
+  }
+
+    .portfolio-archives {
+    grid-template-columns: repeat(1, 1fr); /* 1 column on small screens */
+    padding:0;
+    width:90vw;
+    position: relative;
   }
 }
 
@@ -198,6 +189,14 @@
     object-fit: cover;
   }
 }
+
+/* Responsive Grid */
+@media (max-width: 1048px) {
+  .portfolio-archives {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+  }
+}
+
 
 .fullscreen-gallery img {
   background-color: var(--white);  /* Add background for visibility */

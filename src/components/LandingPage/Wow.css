@@ -26,7 +26,7 @@
 .text {
     position: absolute;
     font-family: "Inter Tight", sans-serif;
-    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-width: 1.5px;
     -webkit-text-stroke-color: var(--red);
     text-align: center;
     align-self: center;
@@ -48,7 +48,7 @@
   background-position: center;
   transition: all 1s ease-in-out;
   opacity: 0;
-  border: 1px solid var(--red);
+  border: 2px solid var(--red);
   transform: scale(0);
   margin: 0 clamp(0.2rem, 1vw, 1.2rem);
 }
@@ -64,6 +64,7 @@
 .inline {
     display: inline-flex;
     align-items: center;
+    margin: 10px auto;
 
     span {
         margin: 0 5px;
@@ -105,7 +106,7 @@
     font-size: clamp(8rem, 8vw, 12rem);
   }
   .circle-image.visible {
-        width:140px;
+        width:120px;
         height:140px;
     }
 }

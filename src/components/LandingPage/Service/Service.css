@@ -158,7 +158,7 @@
     height:500px;
   }
   .img-front img {
-  height: 325px;
+    height: 325px;
   }
 }
 
@@ -234,7 +234,6 @@
   .services {
     .service-title {
       flex-direction: row;
-      width:60%;
       max-width:1200px;
       display: flex;
       justify-items: left;

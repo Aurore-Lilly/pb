@@ -42,7 +42,6 @@ const ServiceTitle = () => {
               className='small-img'
               src={data.fields.smallPicture.fields.file.url}
               alt={data.fields.title}
-              style={{ maxWidth: '70%', height: 'auto' }}
             />
           )}
         </div>

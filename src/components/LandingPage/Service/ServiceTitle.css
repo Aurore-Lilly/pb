@@ -5,13 +5,12 @@
     position: absolute;
 
     .title-content {
-        display: grid; /* Use grid for consistent centering */
-        place-items: center; /* This will center the content both vertically and horizontally */
-        gap: 20px;
+        display: flex; 
+        flex-direction: column;
         width: 100%;
         position: absolute;
         bottom: 0;
-        text-align: center; /* Center text horizontally */
+        text-align: left; /* Center text horizontally */
     }
 
     .service-title {
@@ -19,14 +18,16 @@
             color: var(--black);
             font-weight: 400;
             padding: 20px;
-            text-align: center; /* Ensure text is centered */
+            transform: translateX(0);
+            text-align: left; 
+            margin-block: 0;
         }
 
         h3 {
             font-family: 'cursive';
-            padding: 20px;
+            padding-left: 20px;
             margin-block: 0;
-            text-align: center; /* Ensure title is centered */
+            text-align: left; /* Ensure title is centered */
         }
     }
 
@@ -83,6 +84,12 @@
     }
 }
 
+    .small-img {
+        max-width: 50%;
+        height: 60vh;
+        object-fit: cover;
+    }
+
 @media (max-width: 668px) {
     .service-title {
         p {
@@ -93,7 +100,7 @@
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 868px) {
     .main-page {
         .title-content {
             display: flex;
@@ -101,26 +108,27 @@
             flex-direction: row;
             max-width: 90vw;
         }
+    }
 
-        .services-style {
-            .service-title {
-                h3 {
-                    padding: 0 20px;
-                    font-size: 100px;
-                }
+    .services-style {
+        .service-title {
+            h3 {
+                padding: 0 20px;
+                font-size: 100px;
+            }
 
-                p {
-                    color: var(--black);
-                    font-weight: 400;
-                    padding: 0 20px;
-                    text-align: justify;
-                    margin-block: 0;
-                    max-width: 40vw;
-                }
+            p {
+                color: var(--black);
+                font-weight: 400;
+                padding: 0 20px;
+                text-align: justify;
+                margin-block: 0;
+                max-width: 60vw;
             }
 
             .title-content {
-                top: 38%;
+                top: 46vh;
+                bottom: auto;
                 align-content: flex-start;
                 gap: 0;
             }
@@ -138,10 +146,10 @@
             p {
                 color: var(--black);
                 font-weight: 400;
-                padding: 0 20px;
+                padding: 0 50px;
                 text-align: justify;
                 margin-block: 0;
-                max-width: 40vw;
+                max-width: 60vw;
             }
         }
     }

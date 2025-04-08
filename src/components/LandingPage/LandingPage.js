@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import client from '../../contentful/ContentfulClient';
 import Hamburger from '../Reusable/Header/Hamburger';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'; // Import Contentful's rich text renderer
 import './LandingPage.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -87,9 +88,14 @@ const LandingPage = () => {
           <section className='section-hero static'>
             <section className="landing-content">
               <div className='presentation'>
-                <h5 className='landing-title'><sup>Pauline</sup> Babin</h5>
-                <p className='cursive'>{item.fields.title}</p>
-             
+                <h5 className='landing-title'>
+                  <sup>Pauline</sup> Babin
+                </h5>
+
+                {/* Render the rich text title */}
+                <p className='cursive'>
+                  {item.fields.title && documentToReactComponents(item.fields.titleDescription)}
+                </p>
               </div>
             </section>
           </section>

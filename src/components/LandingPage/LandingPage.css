@@ -40,13 +40,13 @@
     margin:0;
     font-weight: 100;
     font-style:normal;
-    font-size: 65px;
+    font-size: 58px;
     line-height: 1.4em;
     font-style: italic;
     color: var(--red);
     & sup {
       font-weight: 300;
-      font-size: 65px;
+      font-size: 58px;
       font-style: normal;
     } 
   }
@@ -55,7 +55,13 @@
     line-height: 1.8rem;
     width: 17em;
     font-weight: 400;
+    margin-block: 0px;
     text-transform: uppercase;
+
+    & u{
+          background: linear-gradient(to top, var(--pink) 50%, transparent 50%);
+          text-decoration: none;
+    }
   }
 
   & a {
@@ -124,6 +130,8 @@
 
   .landing-images {
     display: flex;
+    width:110vw;
+    overflow: hidden;
     flex-wrap: wrap;
     justify-content: center;
     margin: auto;
@@ -133,10 +141,10 @@
 
   .presentation {
     & .landing-title{
-      font-size:45px;
+      font-size:40px;
 
       & sup {
-          font-size: 45px;
+          font-size: 40px;
       }
       & span {
         font-size: 60px;
@@ -230,9 +238,9 @@
   .presentation {
     height:52vh;
     & .landing-title{
-        font-size: 80px;
+        font-size: 70px;
       & sup {
-        font-size: 80px;
+        font-size: 70px;
       } 
     }    
   }
@@ -250,9 +258,9 @@
   .presentation {
     height:100vh;
     & .landing-title{
-      font-size: 120px;
+      font-size: 100px;
       & sup {
-        font-size: 120px;
+        font-size: 100px;
       } 
     }    
   }
