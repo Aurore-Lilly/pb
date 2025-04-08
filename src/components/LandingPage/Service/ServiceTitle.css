@@ -101,7 +101,7 @@
     }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 768px) {
     .main-page {
         .title-content {
             display: flex;

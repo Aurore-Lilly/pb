@@ -50,14 +50,14 @@
 /* Title Styling */
 .detail-title {
   position: absolute;
-  bottom: 0;
+  bottom: 40px;
   left: 50%;
   transform: translate(-50%, 0%);
   text-transform: capitalize;
   color: var(--white);
   font-size: 9rem;
   margin: 0;
-  text-shadow: 3px 3px var(--black);
+  text-shadow: 3px 3px var(--red);
   padding: 0;
   background: none;
   z-index: 1;
