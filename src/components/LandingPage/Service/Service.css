@@ -152,6 +152,12 @@
 }
 
 
+@media (max-width:400px){
+  .portrait-container{
+    height:500px;
+  }
+}
+
 
 
 /* Responsive Design */
