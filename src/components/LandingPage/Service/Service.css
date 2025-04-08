@@ -147,7 +147,8 @@
 
 .img-front img {
   width: 100%;
-  height: auto;
+  height: 450px;
+  object-fit: cover;
   display: block;
 }
 
@@ -155,6 +156,9 @@
 @media (max-width:400px){
   .portrait-container{
     height:500px;
+  }
+  .img-front img {
+  height: 325px;
   }
 }
 
