@@ -44,12 +44,12 @@ const WowText = () => {
 
         ScrollTrigger.create({
           trigger: circle,
-          start: "top 85%", // Trigger when it reaches the 85% scroll position
+          start: "top 65%", // Trigger when it reaches the 85% scroll position
           onEnter: () => {
             gsap.to(circle, {
               opacity: 1,
               scale: 1,
-              duration: 0.6,
+              duration: 0.4,
               ease: "power3.out",
             });
             circle.classList.add("visible");
@@ -58,7 +58,7 @@ const WowText = () => {
             gsap.to(circle, {
               opacity: 0,
               scale: 0,
-              duration: 0.6,
+              duration: 0.4,
               ease: "power3.out",
             });
             circle.classList.remove("visible");
