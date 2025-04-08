@@ -74,6 +74,7 @@
 @media (max-width:400px){
   .text{
     font-size: clamp(2.6rem, 6vw, 5rem);
+    line-height: 1rem;
   }
 }
 /* Responsive text */

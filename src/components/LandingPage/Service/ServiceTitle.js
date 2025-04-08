@@ -34,24 +34,26 @@ const ServiceTitle = () => {
   };
 
   return (
-    <div className="service-title">
-      <div className='small-img-wrapper'>
-        {data?.fields?.smallPicture && (
-          <img
-            className='small-img'
-            src={data.fields.smallPicture.fields.file.url}
-            alt={data.fields.title}
-            style={{ maxWidth: '70%', height: 'auto' }}
-          />
-        )}
-      </div>
-      <div className='title-content'>
-        <h3 className='cursive'>{data?.fields?.title || 'Default Title'}</h3>
-        {richTextDocument ? (
-          <div className='title-text'>{documentToReactComponents(richTextDocument, options)}</div>
-        ) : (
-          <p>No rich text available</p>
-        )}
+    <div className='service-title-container'>
+      <div className="service-title">
+        <div className='small-img-wrapper'>
+          {data?.fields?.smallPicture && (
+            <img
+              className='small-img'
+              src={data.fields.smallPicture.fields.file.url}
+              alt={data.fields.title}
+              style={{ maxWidth: '70%', height: 'auto' }}
+            />
+          )}
+        </div>
+        <div className='title-content'>
+          <h3 className='cursive'>{data?.fields?.title || 'Default Title'}</h3>
+          {richTextDocument ? (
+            <div className='title-text'>{documentToReactComponents(richTextDocument, options)}</div>
+          ) : (
+            <p>No rich text available</p>
+          )}
+        </div>
       </div>
     </div>
   );

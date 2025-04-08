@@ -5,78 +5,75 @@
     position: absolute;
 
     .title-content {
-    display: flex;
-    flex-direction: column!important;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    align-items: flex-start;
-    gap: 20px;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
+        display: grid; /* Use grid for consistent centering */
+        place-items: center; /* This will center the content both vertically and horizontally */
+        gap: 20px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        text-align: center; /* Center text horizontally */
     }
-    .service-title{
+
+    .service-title {
         p {
-            position: relative;
             color: var(--black);
             font-weight: 400;
             padding: 20px;
-            text-align: justify;
+            text-align: center; /* Ensure text is centered */
         }
+
         h3 {
-            position: relative;
-            padding: 20px;
-            text-align: left;
-            margin-block: 0;
             font-family: 'cursive';
+            padding: 20px;
+            margin-block: 0;
+            text-align: center; /* Ensure title is centered */
         }
     }
 
-    .logo{
-        color:var(--white);
+    .logo {
+        color: var(--white);
     }
 
     .landing-header p {
-        color:var(--white);
+        color: var(--white);
     }
-    .toggle-button{
+
+    .toggle-button {
         border: 1.5px solid var(--white);
     }
 }
 
-
-.small-img{
-    position:absolute;
-    top:90px;
-    right:0;
+.small-img {
+    position: absolute;
+    top: 90px;
+    right: 0;
     border-radius: 200px 0px 0px 200px;
 }
 
-.small-img-wrapper{
-    position:relative;
-    top:0px;
-    right:0;
+.small-img-wrapper {
+    position: relative;
+    top: 0;
+    right: 0;
 
     h3 {
         margin: 0 20px;
-    } 
+    }
 }
 
-
 .main-page {
-    .title-content{
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        text-align: center;
+    .title-content {
+        display: grid; /* Use grid for consistent centering */
+        place-items: center;
         gap: 0px;
-        max-width: 90vw;
-        width:90vw;
-    }  
-    .service-title{
+        max-width: 100vw;
+        width: 100vw;
+    }
+
+    .service-title {
         margin-top: 20px;
         margin-bottom: 80px;
     }
+
     .service-title h3,
     .service-title p {
         text-align: center; /* Ensure text is centered */
@@ -86,34 +83,59 @@
     }
 }
 
-
-
-@media (max-width:668px){
-    .service-title{
+@media (max-width: 668px) {
+    .service-title {
         p {
             width: 90vw;
-            left:50%;
-            transform: translate(-50%, -50%);
+            left: 50%;
+            transform: translateX(-50%); /* Correct positioning for small screens */
         }
-    } 
+    }
 }
 
-@media (min-width: 768px){
+@media (min-width: 768px) {
     .main-page {
-    .title-content{
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        max-width: 90vw;
-    }  
+        .title-content {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            max-width: 90vw;
+        }
+
+        .services-style {
+            .service-title {
+                h3 {
+                    padding: 0 20px;
+                    font-size: 100px;
+                }
+
+                p {
+                    color: var(--black);
+                    font-weight: 400;
+                    padding: 0 20px;
+                    text-align: justify;
+                    margin-block: 0;
+                    max-width: 40vw;
+                }
+            }
+
+            .title-content {
+                top: 38%;
+                align-content: flex-start;
+                gap: 0;
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) {
     .services-style {
-        & .service-title {
-            h3{
-                padding:0 20px;
-                font-size: 100px;
+        .service-title {
+            h3 {
+                padding: 0 50px;
+                font-size: 110px;
             }
             p {
-                position: relative;
                 color: var(--black);
                 font-weight: 400;
                 padding: 0 20px;
@@ -122,33 +144,6 @@
                 max-width: 40vw;
             }
         }
-        
-        & .title-content {
-            top:38%;
-            align-content: flex-start;
-            gap:0;
-        }
     }
-    }
-}
-
-@media (min-width:1024px){
-    .services-style {
-    & .service-title {
-        h3{
-            padding:0 50px;
-            font-size: 110px;
-        }
-        p {
-            position: relative;
-            color: var(--black);
-            font-weight: 400;
-            padding: 0 20px;
-            text-align: justify;
-            margin-block: 0;
-            max-width: 40vw;
-        }
-    }
-}
 }
 
