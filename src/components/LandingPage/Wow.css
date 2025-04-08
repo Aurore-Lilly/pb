@@ -54,9 +54,9 @@
 }
 
 .circle-image.visible {
-  width: 85px;
+  width: 70px;
   display: inline-flex;
-  height: 85px;
+  height: 70px;
   opacity: 1;
   transform: scale(1);
 }
