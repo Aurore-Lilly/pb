@@ -110,13 +110,9 @@ const ServiceDetail = () => {
               ) : (
                 <p>No rich text available</p>
               )}
-              <div className="wrapper">
-                {service?.fields?.list?.map((list, listIndex) => (
-                  <li key={listIndex} className="inter tag">{list}</li>
-                ))}
-              </div>
+              
             </div>
-            <div className="star"><h3>*</h3></div>
+            
           </div>
         </div>
 

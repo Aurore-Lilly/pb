@@ -25,10 +25,9 @@
       margin: auto;
       margin-top: 50px;
       margin-bottom: 0px;
-      color: var(--red);
+      color: var(--black);
       text-align: center;
-      font-family: 'cursive';
-      text-transform: uppercase;
+      text-transform: lowercase;
       font-size: 15px;
       position: relative;
       max-width: 90vw;
