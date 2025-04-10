@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Hamburger from '../../Reusable/Header/Hamburger';
 import ToggleButton from '../../Reusable/Header/ToggleButton';
 import { useLocation } from 'react-router-dom';
-import useScrollChange from '../../../hooks/useScrollChange';
+
 // Import Loader component
 import Loader from '../../Reusable/Loader/Loader';
+
 // Lazy load Portfolio for better performance
 const LazyPortfolio = React.lazy(() => import('./Portfolio'));
 
@@ -13,7 +14,6 @@ const LazyGetInTouch = React.lazy(() => import('../../Reusable/GetInTouch/GetInT
 const LazyFooter = React.lazy(() => import('../../Reusable/Footer/Footer'));
 
 const PortfolioPage = () => {
-  const scrolled = useScrollChange(); // Track scroll state
   const location = useLocation();
 
   const className = location.pathname === "/"
@@ -27,8 +27,8 @@ const PortfolioPage = () => {
   // Simulate loading for at least 1 second
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoading(false); // Hide loader after 1 second
-    }, 3000); // Adjust this as per your needs
+      setIsLoading(false); // Hide loader after delay
+    }, 3000); // Adjust as needed
 
     return () => clearTimeout(timer); // Clean up timeout on unmount
   }, []);
@@ -38,13 +38,13 @@ const PortfolioPage = () => {
       {/* Render Hamburger and ToggleButton immediately */}
       <div className="header-components">
         <Hamburger />
-        <ToggleButton scrolled={scrolled} />
+        <ToggleButton/>
       </div>
 
-      {/* Loader will be shown while the page is loading */}
-      {isLoading && <Loader />} {/* Show loader immediately */}
+      {/* Loader shown while the page is loading */}
+      {isLoading && <Loader />}
 
-      {/* Only render the Portfolio once it has been lazy-loaded */}
+      {/* Lazy load the Portfolio component */}
       <React.Suspense fallback={null}>
         <div className="portfolio-container">
           <LazyPortfolio />

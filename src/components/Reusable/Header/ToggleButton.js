@@ -18,7 +18,8 @@ const ToggleButton = () => {
   useEffect(() => {
     const handleScroll = () => {
       const triggerPoint = window.innerHeight / 2; // 50vh
-      setScrolled(window.scrollY > triggerPoint);
+      const currentScroll = window.scrollY || document.documentElement.scrollTop;
+      setScrolled(currentScroll > triggerPoint);
     };
 
     window.addEventListener('scroll', handleScroll);
