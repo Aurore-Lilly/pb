@@ -141,10 +141,10 @@
 
   .presentation {
     & .landing-title{
-      font-size:40px;
+      font-size:45px;
 
       & sup {
-          font-size: 40px;
+          font-size: 45px;
       }
       & span {
         font-size: 60px;
@@ -155,16 +155,12 @@
       font-size: 14px;
       line-height: 1.2rem;
     }
-  }
-}
-
-@media (max-width: 400px){
-  .presentation {
     & a {
       font-size: 14px;
     }
   }
 }
+
 
 @media (max-width:868px){
    .section-hero{
