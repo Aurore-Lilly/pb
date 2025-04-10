@@ -39,11 +39,7 @@ u {
   font-weight: 400;
   font-style: normal;
 }
-.contrail {
-  font-family: "Contrail One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
+
 
 h1 {
   font-family: 'cursive'; 
@@ -55,16 +51,6 @@ h1 {
 h2{
   font-family: "Inter Tight", sans-serif; 
   font-size: 18px;
-}
-
-
-h3 {
-  font-family: "Contrail One", sans-serif;
-  color:var(--pink);
-  font-size: 60px;
-  font-weight: 400;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: var(--red);  
 }
 
 h5 {

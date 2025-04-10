@@ -41,7 +41,6 @@ const Hamburger = ({ isOpen, toggleMenu }) => {
             <h2 className="menu-footer-text cursive">
               <sup><span className="italic">P</span>auline</sup>
               <span className="second"><span className="italic">B</span>abin</span>
-              <span className="contrail str">*</span>
             </h2>
           </div>
         </div>

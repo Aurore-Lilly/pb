@@ -187,13 +187,6 @@
   font-size: 46px;
 }
 
-.menu-footer-text .contrail {
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: var(--red);
-  color: var(--white);
-  font-size: 40px;
-}
-
 .menu-footer-text .second span {
   letter-spacing: 2px;
 }
