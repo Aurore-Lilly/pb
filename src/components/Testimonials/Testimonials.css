@@ -55,15 +55,6 @@
   font-style: italic;
 }
 
-.testimonial-in-view {
-  transition: color 1s ease-in;
-}
-
-.testimonial-in-view .logo h1,
-.testimonial-in-view .logo p {
-  color: var(--white);
-}
-
 @media (max-width:400px){
   .testimonial-text{
     h2{

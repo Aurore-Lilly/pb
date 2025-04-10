@@ -9,11 +9,11 @@ const TestimonialSlider = () => {
   const [testimonials, setTestimonials] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [error, setError] = useState(null);
-  const [isPaused, setIsPaused] = useState(false); // Track if the cycle is paused
+  const [isPaused, setIsPaused] = useState(false);
 
   const testimonialRef = useRef(null);
   const containerRef = useRef(null);
-  const intervalRef = useRef(null); // Track interval for clearing when paused
+  const intervalRef = useRef(null);
 
   // Fetch video & testimonials from Contentful
   useEffect(() => {
@@ -44,7 +44,7 @@ const TestimonialSlider = () => {
   useEffect(() => {
     if (testimonials.length > 0) {
       const cycleTestimonials = () => {
-        if (isPaused) return; // Don't cycle if paused
+        if (isPaused) return;
 
         const element = testimonialRef.current;
         if (!element) return;
@@ -60,43 +60,16 @@ const TestimonialSlider = () => {
         });
       };
 
-      // Start cycling testimonials every 5 seconds
       intervalRef.current = setInterval(cycleTestimonials, 5000);
 
-      // Clean up interval on unmount or when paused
       return () => clearInterval(intervalRef.current);
     }
   }, [testimonials, isPaused]);
 
-  // Handle hover and touch events to pause/resume cycling
   const handleMouseEnter = () => setIsPaused(true);
   const handleMouseLeave = () => setIsPaused(false);
   const handleTouchStart = () => setIsPaused(true);
   const handleTouchEnd = () => setIsPaused(false);
-
-  // Intersection Observer to Toggle Class on Body
-  useEffect(() => {
-    const element = containerRef.current;
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        document.body.classList.toggle("testimonial-in-view", entry.isIntersecting);
-      },
-      {
-        root: null, // Uses viewport
-        threshold: 0.2, // Trigger when 20% of section is visible
-        rootMargin: "-60% 0px -20% 0px", // Faster removal when scrolling up
-      }
-    );
-
-    observer.observe(element);
-
-    return () => {
-      observer.unobserve(element);
-      document.body.classList.remove("testimonial-in-view");
-    };
-  }, []);
 
   if (error) return <div className="error-message">{error}</div>;
 
@@ -104,13 +77,20 @@ const TestimonialSlider = () => {
     <div
       ref={containerRef}
       className="testimonial-container"
-      onMouseEnter={handleMouseEnter} // Pause on hover
-      onMouseLeave={handleMouseLeave} // Resume on mouse leave
-      onTouchStart={handleTouchStart} // Pause on touch start (mobile)
-      onTouchEnd={handleTouchEnd} // Resume on touch end
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       {videoUrl && (
-        <video className="testimonial-video" autoPlay loop muted playsInline src={videoUrl}></video>
+        <video
+          className="testimonial-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          src={videoUrl}
+        ></video>
       )}
       <div className="overlay"></div>
       <div ref={testimonialRef} className="testimonial-content">

@@ -4,16 +4,26 @@ import Hamburger from './Hamburger';
 import './Header.css';
 import client from '../../../contentful/ContentfulClient';
 
-const ToggleButton = ({ scrolled }) => {
+const ToggleButton = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true); // Add loading state
-
+  const [loading, setLoading] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const triggerPoint = window.innerHeight / 2; // 50vh
+      setScrolled(window.scrollY > triggerPoint);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +37,7 @@ const ToggleButton = ({ scrolled }) => {
         console.error('Error fetching data from Contentful:', err);
         setError('Error fetching content');
       } finally {
-        setLoading(false); // Set loading to false once data fetching is complete
+        setLoading(false);
       }
     };
 
@@ -38,12 +48,12 @@ const ToggleButton = ({ scrolled }) => {
     <div className="header landing-page inter">
       <Hamburger isOpen={isMenuOpen} toggleMenu={toggleMenu} />
 
-      <header className={`landing-header ${scrolled ? "scrolled" : ""}`}>
+      <header className={`landing-header ${scrolled ? 'scrolled' : ''}`}>
         <div className={`header-wrapper logo ${isMenuOpen ? 'logo-open' : 'logo-closed'}`}>
           {loading ? (
-            <h1 className="cursive logo">Loading...</h1> // Show "Loading..." until data is fetched
+            <h1 className="cursive logo">Loading...</h1>
           ) : error ? (
-            <h1 className="cursive logo">Failed to load data</h1> // Error message if there is an error
+            <h1 className="cursive logo">Failed to load data</h1>
           ) : data.length > 0 ? (
             data.map((item) => (
               <Link to="/" key={item.sys.id}>
@@ -52,7 +62,7 @@ const ToggleButton = ({ scrolled }) => {
               </Link>
             ))
           ) : (
-            <h1 className="cursive logo">No Logo Data Available</h1> // Show this if there is no data
+            <h1 className="cursive logo">No Logo Data Available</h1>
           )}
         </div>
       </header>
