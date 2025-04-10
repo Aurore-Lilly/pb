@@ -14,20 +14,40 @@
   }
 }
 
+/* Base styles for the landing-header */
 .landing-header {
   text-align: left;
-  z-index:1000;
-  position:fixed;
-  left:0px;
-  padding:10px 5px 0px 0px;
-  top:0px;
+  z-index: 1000; /* Ensures it's on top of other elements */
+  position: fixed; /* Fix the header at the top */
+  left: 0px;
+  top: 0px;
+  padding: 10px 5px 0px 0px;
+  width: 100%; /* Make sure the header spans the full width */
+  background: var(--white); /* Default background */
+  transition: background 0.6s ease-in-out; /* Transition for background and blur effect */
 }
+
+/* Styles when the user has scrolled past 100vh */
 .landing-header.scrolled {
-  background: linear-gradient(to bottom, var(--pink) 10%, var(--white) 90%);
-  border-top: 1px solid var(--red);
-  width:100vw;
-  transition: background 0.6s ease-in-out;
+  background:  var(--white); /* Gradient effect */
+  border-top: 1px solid var(--red); /* Border at the top when scrolled */
+  box-shadow: 0 2px 14px var(--pink); /* Optional: Adds a subtle shadow for depth */
+  padding-top: 20px; /* Add some padding when scrolled */
+  width: 100vw;
 }
+
+/* Optional: Adds a soft fade effect to the bottom of the header */
+.landing-header:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--white)); /* Fade to white effect at the bottom */
+  z-index: -1; /* Send it behind the content */
+}
+
 .header-wrapper {
   padding: 10px 20px 0px 20px;
   line-height: 15px;
@@ -64,3 +84,6 @@
     }
   }
 }
+
+
+
