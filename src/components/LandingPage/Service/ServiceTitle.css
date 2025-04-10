@@ -129,9 +129,13 @@
 
             .title-content {
                 top: 38vh;
+                display: flex;
                 bottom: auto;
+                justify-content: space-between;
                 align-content: flex-start;
+                flex-wrap: wrap;
                 gap: 0;
+                height: 40vh;
             }
         }
     }
