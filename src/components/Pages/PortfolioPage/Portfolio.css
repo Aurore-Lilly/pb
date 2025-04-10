@@ -1,6 +1,17 @@
 /* Portfolio Container */
+.portfolio-style .logo{
+  color: var(--white);
+  p {
+    color:var(--white);
+  }
+}
 
 .portfolio-style {
+
+  .landing-header{
+    background: transparent;
+  }
+  
   .toggle-button {
     background-color: var(--hot);
     border: 1px solid var(--white);
@@ -8,6 +19,15 @@
   .landing-header{
       transition: color 0.2s ease-in-out, color 0.2s ease-in-out;
 
+  }
+  .landing-header.scrolled{
+    background: var(--white);
+    h1{
+      color: var(--red);
+    }
+    p {
+      color:var(--red);
+    }
   }
 }
 

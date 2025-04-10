@@ -1,7 +1,12 @@
 
 .service-page{
 
+    .landing-header{
+        background:transparent;
+    }
+
     .landing-header.scrolled{
+        background: var(--white);
         .logo{
             color: var(--red);
             p{

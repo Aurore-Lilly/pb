@@ -16,10 +16,21 @@ const ToggleButton = () => {
   };
 
   useEffect(() => {
+    let hasUserScrolled = false;
+
     const handleScroll = () => {
-      const triggerPoint = window.innerHeight / 2; // 50vh
+      const triggerPoint = window.innerHeight / 2;
       const currentScroll = window.scrollY || document.documentElement.scrollTop;
-      setScrolled(currentScroll > triggerPoint);
+
+      if (!hasUserScrolled && currentScroll > 0) {
+        hasUserScrolled = true;
+      }
+
+      if (hasUserScrolled && currentScroll > triggerPoint) {
+        setScrolled(true);
+      } else if (hasUserScrolled && currentScroll <= triggerPoint) {
+        setScrolled(false);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);

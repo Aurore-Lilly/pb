@@ -36,18 +36,6 @@
   width: 100vw;
 }
 
-/* Optional: Adds a soft fade effect to the bottom of the header */
-.landing-header:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 20px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--white)); /* Fade to white effect at the bottom */
-  z-index: -1; /* Send it behind the content */
-}
-
 .header-wrapper {
   padding: 10px 20px 0px 20px;
   line-height: 15px;
