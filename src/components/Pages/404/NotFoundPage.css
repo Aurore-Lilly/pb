@@ -13,4 +13,28 @@
         font-size: clamp(2rem, 5vw, 5rem);
 
     }
+
+    .main-404 {
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .back-button {
+            color: var(--black);
+            background: linear-gradient(to top, #cfff04 40%, transparent 60%);
+            font-size: large;
+        }
+
+        .back-button::before {
+            content: "←";
+            margin-right: 8px;
+            font-size: 1.1em;
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover::before {
+            transform: translateX(-4px);
+        }
+    }
 }

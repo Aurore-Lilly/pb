@@ -9,10 +9,12 @@ const NotFoundPage = () => {
     <div className='notfound'>
     <ToggleButton />
     <Hamburger />
-      <h2>404 Page Not Found 😐</h2>
-      <Link to="/" className="back-button">
-        ⬅ Back to Main Page
-      </Link>
+      <div className='main-404'>
+        <h2>404 Page Not Found 😐</h2>
+        <Link to="/" className="back-button">
+          Retour à la page d'accueil
+        </Link>
+      </div>
     </div>
   );
 };
