@@ -16,6 +16,11 @@ button{
   cursor:pointer;
 }
 
+u {
+  background: linear-gradient(to top, var(--pink) 50%, transparent 50%);
+  text-decoration: none;
+}
+
 @font-face {
   font-family: "cursive";
   src: url("./fonts/thesecretthings-webfont.woff2") format("opentype");
