@@ -31,7 +31,7 @@ const Hamburger = ({ isOpen, toggleMenu }) => {
           </ul>
           <ul className="menu-list">
             <li className="secondary title">EMAIL
-              <a className="secondary" href="mailto:paulinebabin@gmail.com?subject=Let's Work Together&body=Salut Pauline,%0D%0A%0D%0AJ'aimerais discuter d'un projet avec toi!" target="_blank" rel="noopener noreferrer">PAULINEBABIN@GMAIL.COM</a>
+              <a className="secondary" href="mailto:paulinebabinpro@gmail.com?subject=Let's Work Together&body=Salut Pauline,%0D%0A%0D%0AJ'aimerais discuter d'un projet avec toi!" target="_blank" rel="noopener noreferrer">PAULINEBABINPRO@GMAIL.COM</a>
             </li>
             <li className="secondary title">INSTA
               <a className="secondary" href="https://www.instagram.com/lesclichesdepauline/?hl=en" target="_blank" rel="noopener noreferrer">@LESCLICHESDEPAULINE</a>
