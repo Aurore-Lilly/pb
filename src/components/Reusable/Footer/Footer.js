@@ -10,11 +10,11 @@ const Footer = () => {
           <li>
             <a
               className="tag link-with-arrow"
-              href="mailto:paulinebabin@gmail.com?subject=Let's Work Together&body=Salut Pauline,%0D%0A%0D%0AJ'aimerais discuter d'un projet avec toi!"
+              href="mailto:paulinebabinpro@gmail.com?subject=Let's Work Together&body=Salut Pauline,%0D%0A%0D%0AJ'aimerais discuter d'un projet avec toi!"
               target="_blank"
               rel="noopener noreferrer"
             >
-              PAULINEBABIN@GMAIL.COM <span className="arrow-icon">→</span>
+              PAULINEBABINPRO@GMAIL.COM <span className="arrow-icon">→</span>
             </a>
           </li>
         </ul>
