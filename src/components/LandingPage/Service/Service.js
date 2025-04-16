@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import client from '../../../contentful/ContentfulClient';
 
 import ServiceTitle from './ServiceTitle';
-import Loader from '../../Reusable/Loader/Loader'
+import Loader from '../../Reusable/Loader/Loader';
 import { optimizeImage } from '../../../utils/imageUtils';
 import './Service.css';
+
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 const Service = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loadingComplete, setLoadingComplete] = useState(false);
-  
+  const wrapperRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,12 +33,42 @@ const Service = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+  if (!loadingComplete || data.length === 0 || !wrapperRef.current) return;
+
+  const ctx = gsap.context(() => {
+    gsap.utils.toArray('.portrait-component').forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 50, skewY: 5 },
+        {
+          opacity: 1,
+          y: 0,
+          skewY: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+          delay: index * 0.1, // subtle stagger on scroll
+        }
+      );
+    });
+  }, wrapperRef);
+
+  return () => ctx.revert();
+}, [loadingComplete, data]);
+
+ 
+
   if (!loadingComplete) {
-    return <Loader onLoadingComplete={() => {}} />; // No-op callback for consistency
+    return <Loader onLoadingComplete={() => {}} />;
   }
 
   return (
-    <section className="services">
+    <section className="services" ref={wrapperRef}>
       <ServiceTitle />
 
       <div className="service-card">

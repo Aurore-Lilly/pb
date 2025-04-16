@@ -16,9 +16,12 @@
   z-index: 9999;
   inset: 0;
   pointer-events: all;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.8s ease-out;
 }
 
+.main-page {
+  transition: opacity 0.5s ease-in-out;
+}
 
 .loader.hidden {
   opacity: 0;

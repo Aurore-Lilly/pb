@@ -102,8 +102,8 @@
 @media screen and (min-width: 1400px) {
   .text {
     width: 72%;
-    line-height: 12rem;
-    font-size: clamp(8rem, 8vw, 12rem);
+    line-height: 8rem;
+    font-size: clamp(6rem, 6vw, 8rem);
   }
   .circle-image.visible {
         width:120px;

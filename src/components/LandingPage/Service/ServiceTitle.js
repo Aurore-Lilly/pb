@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import client from '../../../contentful/ContentfulClient';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { optimizeImage } from '../../../utils/imageUtils';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './ServiceTitle.css';
-import { optimizeImage } from '../../../utils/imageUtils'
 
+gsap.registerPlugin(ScrollTrigger);
 
 const ServiceTitle = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const titleRef = useRef(null); // 👈 Title
+  const textRef = useRef(null); // 👈 Subtitle
+  const wrapperRef = useRef(null); // 👈 Container
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +29,39 @@ const ServiceTitle = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (!data) return;
+
+    const ctx = gsap.context(() => {
+      gsap.from(titleRef.current, {
+        scrollTrigger: {
+          trigger: wrapperRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+      });
+
+      gsap.from(textRef.current, {
+        scrollTrigger: {
+          trigger: wrapperRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        delay: 0.4,
+        ease: 'power3.out',
+      });
+    }, wrapperRef);
+
+    return () => ctx.revert();
+  }, [data]);
+
   if (error) return <div>{error}</div>;
 
   const richTextDocument = data?.fields?.subtext;
@@ -36,7 +75,7 @@ const ServiceTitle = () => {
   };
 
   return (
-    <div className='service-title-container'>
+    <div className='service-title-container' ref={wrapperRef}>
       <div className="service-title">
         <div className='small-img-wrapper'>
           {data?.fields?.smallPicture && (
@@ -47,13 +86,15 @@ const ServiceTitle = () => {
             />
           )}
         </div>
-        <div>
-          <div className='line'></div>
-        </div>
+        <div><div className='line'></div></div>
         <div className='title-content'>
-          <h3 className='cursive'>{data?.fields?.title || 'Default Title'}</h3>
+          <h3 className='cursive' ref={titleRef}>
+            {data?.fields?.title || 'Default Title'}
+          </h3>
           {richTextDocument ? (
-            <div className='title-text'>{documentToReactComponents(richTextDocument, options)}</div>
+            <div className='title-text' ref={textRef}>
+              {documentToReactComponents(richTextDocument, options)}
+            </div>
           ) : (
             <p>No rich text available</p>
           )}

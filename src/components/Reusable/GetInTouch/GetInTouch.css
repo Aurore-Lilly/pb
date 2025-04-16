@@ -76,6 +76,11 @@ section{
   font-weight: 200;
 }
 
+.email-link:hover p {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
 
 @media (max-width:400px){
   .getInTouch h1 {
