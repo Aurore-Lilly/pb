@@ -14,17 +14,26 @@
   font-size: 24px;
   transition: opacity 1s ease-in-out;
   z-index: 9999;
+  inset: 0;
+  pointer-events: all;
+  transition: opacity 0.4s ease;
+}
+
+
+.loader.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .loader-text {
-  font-size: clamp(3rem, 7vw, 5rem);
+  font-size: clamp(2rem, 5vw, 4rem);
   color: var(--white);
   z-index: 10;
   margin: 5px;
   margin-top: -75px;
   animation: pulse 1.5s infinite ease-in-out;
   sup {
-    font-size: clamp(3rem, 7vw, 5rem);
+    font-size: clamp(2rem, 5vw, 4rem);
   }
 }
 

@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./ServiceCard.css"; // Separate CSS for service cards
+import { optimizeImage } from '../../../utils/imageUtils'
+
 
 const ServiceCard = ({ service, index }) => {
   return (
@@ -15,11 +17,11 @@ const ServiceCard = ({ service, index }) => {
 
       <div className="portrait-container">
         <div className="background-img">
-          <img src={service.fields.backgroundImage.fields.file.url} alt={service.fields.title} />
+          <img src={optimizeImage(service.fields.backgroundImage.fields.file.url, { w: 1200 })} alt={service.fields.title} />
         </div>
 
         <div className="img-front">
-          <img src={service.fields.frontImage.fields.file.url} alt={service.fields.title} />
+          <img src={optimizeImage(service.fields.frontImage.fields.file.url, { w: 1200 })} alt={service.fields.title} />
         </div>
 
         <div className="tag-container">

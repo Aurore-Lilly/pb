@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Hamburger from './Hamburger';
 import './Header.css';
 import client from '../../../contentful/ContentfulClient';
 
-const ToggleButton = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const ToggleButton = ({ isOpen, toggleMenu }) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [scrolled, setScrolled] = useState(false);
-
   const location = useLocation();
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,11 +17,7 @@ const ToggleButton = () => {
       const triggerPoint = window.innerHeight * (isServicesPage ? 0.5 : isMobile ? 0.5 : 1.5);
       const currentScroll = window.scrollY || document.documentElement.scrollTop;
 
-      if (currentScroll > triggerPoint) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(currentScroll > triggerPoint);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -41,10 +30,8 @@ const ToggleButton = () => {
         const response = await client.getEntries({
           content_type: 'photographerPortfolio',
         });
-
         setData(response.items || []);
       } catch (err) {
-        console.error('Error fetching data from Contentful:', err);
         setError('Error fetching content');
       } finally {
         setLoading(false);
@@ -56,10 +43,8 @@ const ToggleButton = () => {
 
   return (
     <div className="header landing-page inter">
-      <Hamburger isOpen={isMenuOpen} toggleMenu={toggleMenu} />
-
       <header className={`landing-header ${scrolled ? 'scrolled' : ''}`}>
-        <div className={`header-wrapper logo ${isMenuOpen ? 'logo-open' : 'logo-closed'}`}>
+        <div className={`header-wrapper logo ${isOpen ? 'logo-open' : 'logo-closed'}`}>
           {loading ? (
             <h1 className="cursive logo">Loading...</h1>
           ) : error ? (
@@ -77,8 +62,8 @@ const ToggleButton = () => {
         </div>
       </header>
 
-      <button className={`toggle-button cursive ${isMenuOpen ? 'open' : 'closed'}`} onClick={toggleMenu}>
-        {isMenuOpen ? (
+      <button className={`toggle-button cursive ${isOpen ? 'open' : 'closed'}`} onClick={toggleMenu}>
+        {isOpen ? (
           <div className="close-menu">
             <span className="inter close-text">CLOSE</span>
           </div>

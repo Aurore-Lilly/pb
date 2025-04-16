@@ -7,6 +7,8 @@ import ToggleButton from '../../Reusable/Header/ToggleButton';
 import './ServiceDetail.css';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Footer from '../../Reusable/Footer/Footer';
+import { optimizeImage } from '../../../utils/imageUtils'
+
 
 const ServiceDetail = () => {
   const { slug } = useParams();
@@ -14,6 +16,9 @@ const ServiceDetail = () => {
   const [services, setServices] = useState([]);
   const [error, setError] = useState(null);
   const { pathname } = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   // Scroll to top when pathname changes
   useEffect(() => {
@@ -76,13 +81,13 @@ const ServiceDetail = () => {
 
   return (
     <section className="service-detail">
-      <Hamburger />
-      <ToggleButton />
+      <Hamburger isOpen={isMenuOpen} toggleMenu={toggleMenu}/>
+      <ToggleButton isOpen={isMenuOpen} toggleMenu={toggleMenu}/>
 
       <div className="service-layout">
         <div className="detail-hero">
           <img
-            src={service?.fields?.frontImage?.fields?.file?.url}
+            src={optimizeImage(service?.fields?.frontImage?.fields?.file?.url, { w: 1200 })}
             alt={service?.fields?.title || 'Service Image'}
             className="hero-image"
           />
@@ -94,7 +99,7 @@ const ServiceDetail = () => {
             {service?.fields?.backgroundImage && (
               <div className="small-picture">
                 <img
-                  src={service.fields.backgroundImage.fields.file.url}
+                  src={optimizeImage(service.fields.backgroundImage.fields.file.url, { w: 1200 })}
                   alt={service.fields.title}
                   className="small-photo"
                 />

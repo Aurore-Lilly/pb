@@ -10,6 +10,11 @@ const LazyFooter = React.lazy(() => import('../../Reusable/Footer/Footer'));
 
 const PortfolioPage = () => {
   const location = useLocation();
+  const [isLoading, setIsLoading] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   const className = location.pathname === "/"
     ? "home-style"
@@ -17,10 +22,6 @@ const PortfolioPage = () => {
     ? "portfolio-style"
     : "default-style";
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [scrolled, setScrolled] = useState(false);
-
-  // Show loader briefly on mount
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -28,7 +29,6 @@ const PortfolioPage = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Detect scroll past 100vh accurately
   useEffect(() => {
     const handleScroll = () => {
       requestAnimationFrame(() => {
@@ -38,9 +38,7 @@ const PortfolioPage = () => {
       });
     };
 
-    // Run once on mount in case user is already scrolled
     handleScroll();
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -48,8 +46,8 @@ const PortfolioPage = () => {
   return (
     <section className={`portfolio-page ${className} ${scrolled ? 'scrolled' : ''}`}>
       <div className="header-components">
-        <Hamburger />
-        <ToggleButton />
+        <ToggleButton isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+        <Hamburger isOpen={isMenuOpen} toggleMenu={toggleMenu} />
       </div>
 
       {isLoading && <Loader />}

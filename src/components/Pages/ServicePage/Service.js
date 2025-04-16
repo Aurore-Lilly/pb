@@ -11,10 +11,14 @@ import Footer from '../../Reusable/Footer/Footer';
 import GetInTouch from '../../Reusable/GetInTouch/GetInTouch';
 
 const ServicePage = () => {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
+  const [data, setData]     = useState([]);
+  const [error, setError]   = useState(null);
+  const [loading, setLoading] = useState(true);          // ← loading state
   const location = useLocation();
-  const scrolled = useScrollChange(100 * window.innerHeight / 100 / 2);
+  const scrolled = useScrollChange(window.innerHeight * 0.5);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   const className = location.pathname === '/' 
     ? 'home-style' 
@@ -27,9 +31,11 @@ const ServicePage = () => {
       try {
         const response = await client.getEntries({ content_type: 'serviceCard' });
         setData(response.items || []);
-      } catch (error) {
-        console.error("Error fetching service data:", error);
+      } catch (err) {
+        console.error("Error fetching service data:", err);
         setError("Failed to load services. Please try again later.");
+      } finally {
+        setLoading(false);                             // ← turn off loading
       }
     };
 
@@ -39,12 +45,16 @@ const ServicePage = () => {
   return (
     <div className={`service-page ${className}`}>
       <div className='portfolio-container'>
-        <Hamburger />    
-        <ToggleButton scrolled={scrolled} />
+        <Hamburger isOpen={isMenuOpen} toggleMenu={toggleMenu} />    
+        <ToggleButton scrolled={scrolled} isOpen={isMenuOpen} toggleMenu={toggleMenu} />
         <ServiceTitle />
       </div>
 
-      {error ? (
+      {loading ? (
+        <div className="loading-container">
+          <h2>Loading services…</h2>
+        </div>
+      ) : error ? (
         <p className="error-text">{error}</p>
       ) : (
         <div className='services-cards-container'>

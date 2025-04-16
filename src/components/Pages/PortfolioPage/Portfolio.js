@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { fetchEntries } from "../../../contentful/ContentfulClient";
 import gsap from "gsap";
 import "./Portfolio.css";
+import { optimizeImage } from '../../../utils/imageUtils'
+
 
 // Lazy load PortfolioTitle to ensure it loads first
 const PortfolioTitle = React.lazy(() => import("./PortfolioTitle"));
@@ -103,7 +105,7 @@ const Portfolio = () => {
                   onClick={() => handleImageClick(item.fields.pictures, imgIndex)}
                 >
                   <span className="num_portfolio cursive">_0{imgIndex + 1}</span>
-                  <img src={img.fields.file.url} alt={item.fields.title || "Project Image"} />
+                  <img src={optimizeImage(img.fields.file.url, { w: 1200 })} alt={item.fields.title || "Project Image"} />
                 </div>
               ) : null
             )
@@ -118,7 +120,7 @@ const Portfolio = () => {
               {orderedImages.map((img, index) =>
                 img?.fields?.file?.url ? (
                   <div key={index} className="image-item">
-                    <img src={img.fields.file.url} alt={`Gallery ${index}`} />
+                    <img src={optimizeImage(img.fields.file.url, { w: 1200 })} alt={`Gallery ${index}`} />
                   </div>
                 ) : null
               )}

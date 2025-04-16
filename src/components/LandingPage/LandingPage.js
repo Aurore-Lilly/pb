@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import client from '../../contentful/ContentfulClient';
-import Hamburger from '../Reusable/Header/Hamburger';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'; // Import Contentful's rich text renderer
 import './LandingPage.css';
 
@@ -11,12 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 const LandingPage = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Toggle the menu state
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+ 
 
   // Fetch data from Contentful
   useEffect(() => {
@@ -68,21 +63,8 @@ const LandingPage = () => {
   }
 
   return (
-    <div className="landing-page inter">
-      <Hamburger isOpen={isMenuOpen} toggleMenu={toggleMenu} />
-
-      <button className={`toggle-button cursive ${isMenuOpen ? 'open' : 'closed'}`} onClick={toggleMenu}>
-        {isMenuOpen ? (
-          <div className='close-menu'>
-            <span className="inter close-text">CLOSE</span>
-          </div>
-        ) : (
-          <div className='open-menu'>
-            <span className="inter open-text">MENU</span>
-          </div>
-        )}
-      </button>
-
+  <div className="landing-page inter">
+    <div className="landing-fade-wrapper">
       {data?.map((item) => (
         <div key={item.sys.id}>
           <section className='section-hero static'>
@@ -91,8 +73,6 @@ const LandingPage = () => {
                 <h5 className='landing-title'>
                   <sup>Pauline</sup> Babin
                 </h5>
-
-                {/* Render the rich text title */}
                 <p className='cursive'>
                   {item.fields.title && documentToReactComponents(item.fields.titleDescription)}
                 </p>
@@ -102,7 +82,8 @@ const LandingPage = () => {
         </div>
       ))}
     </div>
-  );
+  </div>
+);
 };
 
 export default LandingPage;

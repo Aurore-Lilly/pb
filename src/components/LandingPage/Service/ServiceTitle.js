@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import client from '../../../contentful/ContentfulClient';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import './ServiceTitle.css';
+import { optimizeImage } from '../../../utils/imageUtils'
+
 
 const ServiceTitle = () => {
   const [data, setData] = useState(null);
@@ -40,7 +42,7 @@ const ServiceTitle = () => {
           {data?.fields?.smallPicture && (
             <img
               className='small-img'
-              src={data.fields.smallPicture.fields.file.url}
+              src={optimizeImage(data.fields.smallPicture.fields.file.url, { w: 1200 })}
               alt={data.fields.title}
             />
           )}

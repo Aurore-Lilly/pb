@@ -1,48 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { gsap } from 'gsap';
 import { fetchEntries } from '../../contentful/ContentfulClient';
+import { optimizeImage } from '../../utils/imageUtils';
 
-const ImageHero = ({ content }) => {
+const ImageHero = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true); // Track loading state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const items = await fetchEntries('photographerPortfolio');
         setData(items);
-        setLoading(false); // Set loading to false when data is fetched
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching data from Contentful', error);
         setError(error);
-        setLoading(false); // Even if there's an error, stop loading
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
-
-  useEffect(() => {
-    if (!loading && data) {
-      // Trigger GSAP animation only after data is fetched and loading is complete
-      gsap.from(".image-hero", {
-        opacity: 0.8,
-        y: 50,
-        duration: 1,
-        stagger: 0.3,
-      });
-    }
-  }, [data, loading]); // Run this effect once data is fetched and loading is done
-
-  const handleImageLoad = (e) => {
-    // Trigger the GSAP animation when an image is loaded
-    gsap.from(e.target, {
-      opacity: 0.8,
-      y: 50,
-      duration: 1,
-    });
-  };
 
   if (error) {
     return (
@@ -71,14 +50,13 @@ const ImageHero = ({ content }) => {
                 {item.fields.mainImage && Array.isArray(item.fields.mainImage) ? (
                   item.fields.mainImage.map((image, imgIndex) => (
                     <div key={imgIndex} className={`image-column column-${imgIndex % 3}`}>
-                      <div className="image-container">
+                      <div className="image-container img-hero">
                         <img
-                          className="img-landing"
-                          src={image.fields.file.url}
+                          className="img-landing img-hero"
+                          src={optimizeImage(image.fields.file.url, { w: 1200 })}
                           alt={item.fields.title}
-                          loading="lazy"  // Enable lazy loading for images
+                          loading="lazy"
                           style={{ maxWidth: '100%', height: 'auto' }}
-                          onLoad={handleImageLoad} // Trigger GSAP animation on image load
                         />
                       </div>
                     </div>
@@ -87,11 +65,10 @@ const ImageHero = ({ content }) => {
                   <div className="image-container">
                     <img
                       className="img-landing"
-                      src={item.fields.mainImage.fields.file.url}
+                      src={optimizeImage(item.fields.mainImage.fields.file.url, { w: 1200 })}
                       alt={item.fields.title}
-                      loading="lazy"  // Enable lazy loading for images
+                      loading="lazy"
                       style={{ maxWidth: '100%', height: 'auto' }}
-                      onLoad={handleImageLoad} // Trigger GSAP animation on image load
                     />
                   </div>
                 ) : null}

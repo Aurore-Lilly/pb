@@ -2,34 +2,34 @@ import React, { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import './Loader.css';
 
-const Loader = ({ onLoadingComplete }) => {
-  const [loadingComplete, setLoadingComplete] = useState(false);
+const Loader = ({ onAnimationComplete }) => {
+  const [shouldRender, setShouldRender] = useState(true);
 
   useEffect(() => {
-    // Handle the opacity animation for the loader container
-    gsap.fromTo(
-      '.loader',
-      { opacity: 1 },
-      { opacity: 0, duration: 1.5, delay: 4, onComplete: () => {
-        setLoadingComplete(true); // Mark loading as complete
-        if (onLoadingComplete) {
-          onLoadingComplete(); // Ensure the callback is passed and is a function
-        }
-      }}
-    );
+    
+    const timeline = gsap.timeline({
+      delay: 0.5,
+    });
 
-    // Animate progress bar width (simulate loading progress)
-    gsap.fromTo(
-      '.progress-bar',
-      { width: '0%' },
-      { width: '100%', duration: 5, ease: 'power1.inOut' }
-    );
-  }, [onLoadingComplete]);
+    timeline
+      .fromTo(
+        '.progress-bar',
+        { width: '0%' },
+        { width: '100%', duration: 3, ease: 'power1.inOut' }
+      )
+      .to('.loader', {
+        opacity: 0,
+        filter: 'blur(2px)',
+        duration: 1,
+        ease: 'power2.out',
+        onComplete: () => {
+          setShouldRender(false); // 👈 fade done, now remove from DOM
+          if (onAnimationComplete) onAnimationComplete(); // tell parent it's safe
+        },
+      });
+  }, [onAnimationComplete]);
 
-  // If loading is complete, render null
-  if (loadingComplete) {
-    return null; // Hide the loader once loading is complete
-  }
+  if (!shouldRender) return null;
 
   return (
     <div className="loader">

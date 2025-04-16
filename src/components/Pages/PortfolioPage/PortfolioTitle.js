@@ -3,6 +3,8 @@ import { fetchEntries } from "../../../contentful/ContentfulClient";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import gsap from "gsap";
 import "./PortfolioTitle.css";
+import { optimizeImage } from '../../../utils/imageUtils'
+
 
 const PortfolioTitle = () => {
   const [data, setData] = useState([]);
@@ -103,7 +105,7 @@ const PortfolioTitle = () => {
             >
               <img
                 className="hero-portfolio"
-                src={item.fields?.titlePicture?.fields?.file?.url}
+                src={optimizeImage(item.fields?.titlePicture?.fields?.file?.url, { w: 1200 })}
                 alt={item.fields?.title || "Portfolio"}
               />
             </div>

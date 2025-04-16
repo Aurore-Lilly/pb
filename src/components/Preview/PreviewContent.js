@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchEntries } from '../../contentful/ContentfulClient';
+import { optimizeImage } from '../../utils/imageUtils'
+
 
 const PreviewContent = () => {
   const [entries, setEntries] = useState([]);
@@ -32,7 +34,7 @@ const PreviewContent = () => {
             {/* Ensure mainImage and its file are defined before accessing the URL */}
             {entry.fields.mainImage && entry.fields.mainImage.fields && entry.fields.mainImage.fields.file ? (
               <img 
-                src={entry.fields.mainImage.fields.file.url} 
+                src={optimizeImage(entry.fields.mainImage.fields.file.url, { w: 1200 })} 
                 alt={entry.fields.title} 
                 style={{ maxWidth: '100%', height: 'auto' }} 
               />

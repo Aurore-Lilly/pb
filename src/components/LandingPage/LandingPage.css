@@ -1,4 +1,7 @@
-
+.main-page{
+  opacity:0;
+  transition: opacity 0.3s ease;
+}
 .section.hero {
   z-index: 5;
   margin-bottom: 0;

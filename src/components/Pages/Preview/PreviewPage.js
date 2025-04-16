@@ -6,20 +6,22 @@ import ImageHero from '../../Reusable/ImageHero';
 import Service from '../../LandingPage/Service/Service';
 import GetInTouch from '../../Reusable/GetInTouch/GetInTouch';
 import Footer from '../../Reusable/Footer/Footer';
-import { fetchEntries } from '../../../contentful/ContentfulClient'; // Ensure you have your contentful client set up
+import { fetchEntries } from '../../../contentful/ContentfulClient';
 import Loader from '../../Reusable/Loader/Loader';
 
 const PreviewPage = () => {
-  const [previewData, setPreviewData] = useState(null); // State to hold the fetched preview data
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState(null); // Error state
+  const [previewData, setPreviewData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // UseEffect to fetch preview content from Contentful
+  const toggleMenu = () => setIsMenuOpen(prev => !prev);
+
   useEffect(() => {
     const fetchPreviewContent = async () => {
       try {
-        const data = await fetchEntries(true); // Fetch preview content from Contentful
-        setPreviewData(data); // Set the preview data into state
+        const data = await fetchEntries(true); // Pass preview mode = true
+        setPreviewData(data);
         setLoading(false);
       } catch (err) {
         console.error('Error fetching preview content:', err);
@@ -29,26 +31,35 @@ const PreviewPage = () => {
     };
 
     fetchPreviewContent();
-  }, []); // Runs once on component mount
+  }, []);
 
-  // Show a loading indicator while fetching content
   if (loading) return <Loader />;
-  
-  // Show error if there was a problem fetching the content
   if (error) return <div>{error}</div>;
 
   return (
-    <div>
-      <Hamburger />
-      <LandingPage />
-      <ToggleButton />
-      
-      {/* Use preview data in components */}
-      <ImageHero content={previewData} />
-      <Service content={previewData} />
-      <GetInTouch content={previewData} />
-      
-      <Footer />
+    <div className="preview-page">
+      <ToggleButton isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+      <Hamburger isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+
+      <div className="preview-landing">
+        <LandingPage />
+      </div>
+
+      <div className="preview-image-hero">
+        <ImageHero content={previewData} />
+      </div>
+
+      <div className="preview-service">
+        <Service content={previewData} />
+      </div>
+
+      <div className="preview-contact">
+        <GetInTouch content={previewData} />
+      </div>
+
+      <div className="preview-footer">
+        <Footer />
+      </div>
     </div>
   );
 };
