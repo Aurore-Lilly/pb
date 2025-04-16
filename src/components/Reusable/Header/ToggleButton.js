@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Hamburger from './Hamburger';
 import './Header.css';
 import client from '../../../contentful/ContentfulClient';
@@ -11,31 +11,29 @@ const ToggleButton = () => {
   const [loading, setLoading] = useState(true);
   const [scrolled, setScrolled] = useState(false);
 
+  const location = useLocation();
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   useEffect(() => {
-    let hasUserScrolled = false;
-
     const handleScroll = () => {
-      const triggerPoint = window.innerHeight / 2;
+      const isMobile = window.innerWidth <= 768;
+      const isServicesPage = location.pathname.startsWith('/services');
+      const triggerPoint = window.innerHeight * (isServicesPage ? 0.5 : isMobile ? 0.5 : 1.5);
       const currentScroll = window.scrollY || document.documentElement.scrollTop;
 
-      if (!hasUserScrolled && currentScroll > 0) {
-        hasUserScrolled = true;
-      }
-
-      if (hasUserScrolled && currentScroll > triggerPoint) {
+      if (currentScroll > triggerPoint) {
         setScrolled(true);
-      } else if (hasUserScrolled && currentScroll <= triggerPoint) {
+      } else {
         setScrolled(false);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   useEffect(() => {
     const fetchData = async () => {
