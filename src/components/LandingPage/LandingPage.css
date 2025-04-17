@@ -1,10 +1,31 @@
-.main-page {
-  /* opacity: 0;
-  visibility: hidden; */
+  .main-page {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-hero {
+  z-index: 1; /* fixed, but behind other content */
 }
 .main-page.gsap-hidden {
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
+}
+
+.main-page.main-ready {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.3s ease;
+}
+
+/* Optional for performance */
+.landing-content,
+.toggle-button,
+.hamburger,
+.image-hero {
+  will-change: transform, opacity;
 }
 .main-page.gsap-visible {
   visibility: visible;
