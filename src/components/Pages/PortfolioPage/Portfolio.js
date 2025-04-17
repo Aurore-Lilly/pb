@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useState, useRef, Suspense } from "react";
 import { fetchEntries } from "../../../contentful/ContentfulClient";
 import gsap from "gsap";
 import "./Portfolio.css";
@@ -10,11 +10,12 @@ const Portfolio = () => {
   const [data, setData] = useState([]);
   const [clickedImages, setClickedImages] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+
   const galleryRef = useRef(null);
   const fullscreenRef = useRef(null);
   const collageRef = useRef(null);
-
-  const [loading, setLoading] = useState(true); // NEW
+  const containerRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,43 +25,37 @@ const Portfolio = () => {
       } catch (err) {
         console.error("Error fetching data:", err);
       } finally {
-        setLoading(false); // <-- only stop loading when fetch completes
+        setLoading(false);
       }
     };
     fetchData();
   }, []);
 
-  useEffect(() => {
-    if (data.length) {
-      // Animate title
-      gsap.from(".title-container", {
-        opacity: 0,
-        y: -30,
-        duration: 0.8,
-        ease: "power2.out",
-      });
+  useLayoutEffect(() => {
+    if (!loading && containerRef.current) {
+      const ctx = gsap.context(() => {
+        gsap.from(containerRef.current, {
+          opacity: 0,
+          y: 30,
+          duration: 0.6,
+          ease: "power2.out",
+          onComplete: () => {
 
-      // Animate portfolio items with stagger
-      gsap.from(".portfolio-item", {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        ease: "power2.out",
-        stagger: 0.1,
-        delay: 0.2,
-      });
+            gsap.from(".portfolio-item", {
+              opacity: 0,
+              y: 20,
+              duration: 0.8,
+              ease: "power2.out",
+              stagger: 0.1,
+              delay: 0.2,
+            });
+          },
+        });
+      }, containerRef);
+
+      return () => ctx.revert();
     }
-  }, [data]);
-
-  useEffect(() => {
-  if (!loading && data.length) {
-    gsap.from(".portfolio-container", {
-      opacity: 0,
-      duration: 0.6,
-      ease: "power2.out",
-    });
-  }
-}, [loading, data]);
+  }, [loading]);
 
   const handleImageClick = (images, index) => {
     setClickedImages(images);
@@ -100,11 +95,12 @@ const Portfolio = () => {
     ? [...clickedImages.slice(currentImageIndex), ...clickedImages.slice(0, currentImageIndex)]
     : [];
 
+  // Scroll-triggered collage animation
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && collageRef.current) {
             gsap.fromTo(
               collageRef.current,
               { opacity: 0, y: 50 },
@@ -127,7 +123,6 @@ const Portfolio = () => {
 
   if (loading) return null;
 
-
   if (!data.length) {
     return (
       <div className="error-container">
@@ -137,12 +132,12 @@ const Portfolio = () => {
   }
 
   return (
-    <div className="portfolio-container">
-      <React.Suspense>
+    <div className="port-container" ref={containerRef}>
+      <Suspense>
         <div className="title-container">
           <PortfolioTitle />
         </div>
-      </React.Suspense>
+      </Suspense>
 
       <section className="portfolio-collage" ref={collageRef}>
         {data.map((item, index) =>

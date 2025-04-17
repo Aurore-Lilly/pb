@@ -10,6 +10,12 @@
   align-items: center;
 }
 
+.hero-background-portfolio {
+  background-color: red;
+  opacity: 1;
+  transition: none;
+}
+
 
 .portfolio-title-wrapper {
   height: 100vh;
