@@ -34,12 +34,11 @@ const GetInTouch = () => {
         pRef.current,
         { scale: 0.8, opacity: 0 },
         {
-          scale: 1,
+          
           opacity: 1,
           duration: 0.8,
           scale: 1.05,
-ease: 'back.out(1.7)', // playful bounce
-          ease: 'power3.out',
+          ease: 'back.out(1.7)', // playful bounce
           scrollTrigger: {
             trigger: sectionRef.current,
             start: 'top 85%',
