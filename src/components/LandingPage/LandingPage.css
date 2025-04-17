@@ -1,7 +1,19 @@
-.main-page{
-  opacity:0;
-  transition: opacity 0.3s ease;
+.main-page {
+  /* opacity: 0;
+  visibility: hidden; */
 }
+.main-page.gsap-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+.main-page.gsap-visible {
+  visibility: visible;
+}
+.toggle-wrapper {
+  position: absolute;
+  top:0;
+}
+
 .section.hero {
   z-index: 5;
   margin-bottom: 0;

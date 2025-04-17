@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useLayoutEffect, Suspense } from 'react';
 import Hamburger from '../../Reusable/Header/Hamburger';
 import ToggleButton from '../../Reusable/Header/ToggleButton';
 import { useLocation } from 'react-router-dom';
 import Loader from '../../Reusable/Loader/Loader';
+import gsap from 'gsap';
 
 const LazyPortfolio = React.lazy(() => import('./Portfolio'));
 const LazyGetInTouch = React.lazy(() => import('../../Reusable/GetInTouch/GetInTouch'));
@@ -11,24 +12,73 @@ const LazyFooter = React.lazy(() => import('../../Reusable/Footer/Footer'));
 const PortfolioPage = () => {
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(true);
-  const [scrolled, setScrolled] = useState(false);
+  const [showHeader, setShowHeader] = useState(false);
+  const [showContent, setShowContent] = useState(false);
+  const [showFooter, setShowFooter] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const loaderRef = useRef(null);
+  const toggleRef = useRef(null);
+  const hamburgerRef = useRef(null);
+  const headerContainer = useRef(null);
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
-  const className = location.pathname === "/"
-    ? "home-style"
-    : location.pathname.includes("/portfolio")
-    ? "portfolio-style"
-    : "default-style";
+  const className =
+    location.pathname === "/"
+      ? "home-style"
+      : location.pathname.includes("/portfolio")
+      ? "portfolio-style"
+      : "default-style";
 
+  // Animate loader out and reveal header
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+      if (loaderRef.current) {
+        loaderRef.current.classList.add("fade-out");
+        setTimeout(() => {
+          setIsLoading(false);
+          setShowHeader(true);
+        }, 500); // match with fade CSS transition
+      } else {
+        setIsLoading(false);
+        setShowHeader(true);
+      }
+    }, 2500);
     return () => clearTimeout(timer);
   }, []);
 
+  // Animate header, then reveal portfolio content, then footer
+  useLayoutEffect(() => {
+    if (showHeader) {
+      const ctx = gsap.context(() => {
+        gsap.fromTo(
+          [toggleRef.current, hamburgerRef.current],
+          { opacity: 0, y: -20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: 'power2.out',
+            stagger: 0.15,
+            clearProps: 'all',
+            onComplete: () => {
+              setTimeout(() => {
+                setShowContent(true);
+                setTimeout(() => {
+                  setShowFooter(true);
+                }, 300); // delay footer after portfolio appears
+              }, 100);
+            },
+          }
+        );
+      }, headerContainer);
+      return () => ctx.revert();
+    }
+  }, [showHeader]);
+
+  // Optional scroll trigger
   useEffect(() => {
     const handleScroll = () => {
       requestAnimationFrame(() => {
@@ -45,30 +95,46 @@ const PortfolioPage = () => {
 
   return (
     <section className={`portfolio-page ${className} ${scrolled ? 'scrolled' : ''}`}>
-      <div className="header-components">
-        <ToggleButton isOpen={isMenuOpen} toggleMenu={toggleMenu} />
-        <Hamburger isOpen={isMenuOpen} toggleMenu={toggleMenu} />
-      </div>
-
-      {isLoading && <Loader />}
-
-      <React.Suspense fallback={null}>
-        <div className="portfolio-container">
-          <LazyPortfolio />
+      {isLoading && (
+        <div ref={loaderRef}>
+          <Loader />
         </div>
-      </React.Suspense>
+      )}
 
-      <React.Suspense fallback={<div>Loading Get In Touch...</div>}>
-        <div className="footer-and-contact">
-          <LazyGetInTouch />
+      {showHeader && (
+        <div className="header-components" ref={headerContainer}>
+          <div ref={toggleRef}>
+            <ToggleButton isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+          </div>
+          <div ref={hamburgerRef}>
+            <Hamburger isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+          </div>
         </div>
-      </React.Suspense>
+      )}
 
-      <React.Suspense fallback={<div>Loading Footer...</div>}>
-        <div className="footer-section">
-          <LazyFooter />
-        </div>
-      </React.Suspense>
+      {showContent && (
+        <Suspense fallback={null}>
+          <div className="portfolio-container">
+            <LazyPortfolio />
+          </div>
+        </Suspense>
+      )}
+
+      {showFooter && (
+        <>
+          <Suspense fallback={null}>
+            <div className="footer-and-contact">
+              <LazyGetInTouch />
+            </div>
+          </Suspense>
+
+          <Suspense fallback={null}>
+            <div className="footer-section">
+              <LazyFooter />
+            </div>
+          </Suspense>
+        </>
+      )}
     </section>
   );
 };

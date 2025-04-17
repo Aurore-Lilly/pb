@@ -44,7 +44,7 @@ const WowText = () => {
 
         ScrollTrigger.create({
           trigger: circle,
-          start: "top 65%", // Trigger when it reaches the 85% scroll position
+          start: "top bottom",
           onEnter: () => {
             gsap.to(circle, {
               opacity: 1,

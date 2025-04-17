@@ -87,7 +87,7 @@ const PortfolioTitle = () => {
 
   // Remove this check to stop rendering the "No portfolio data" message
   // You can either return null or simply render nothing when data is not available.
-  if (!data || data.length === 0) return null; // This will render nothing when no data is available
+  if (!isLoaded || !data.length) return null;
 
   return (
     <div className="portfolio-title">

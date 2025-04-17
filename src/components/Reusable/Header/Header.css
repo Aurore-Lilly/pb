@@ -1,7 +1,10 @@
-.logo {
+.cursive.logo {
   transition: color 1s ease;
   background: none;
+  white-space: nowrap;
+  display: inline-block;
 }
+
 .logo-open{
     h1, p{
     color:var(--white);
