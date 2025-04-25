@@ -28,10 +28,13 @@ const ServiceDetail = () => {
   // Fetch service details based on the slug
   useEffect(() => {
     if (!slug) return;
+    
 
     const fetchServices = async () => {
       try {
         const response = await client.getEntries({ content_type: 'serviceCard' });
+            console.log('Fetched Contentful entries:', response); // 👈 Add this line
+
 
         if (response.items.length > 0) {
           setServices(response.items);
@@ -108,13 +111,13 @@ const ServiceDetail = () => {
           </div>
           <div className="second-el">
             <div className="service-list">
-              {service.fields.subtext ? (
-                <div className="rich-text-container">
-                  {documentToReactComponents(service.fields.description, options)}
-                </div>
-              ) : (
-                <p>No rich text available</p>
-              )}
+              {service.fields.description ? (
+              <div className="rich-text-container">
+                {documentToReactComponents(service.fields.description, options)}
+              </div>
+            ) : (
+              <p>No rich text available</p>
+            )}
               
             </div>
             
