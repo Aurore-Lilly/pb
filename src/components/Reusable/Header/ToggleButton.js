@@ -52,12 +52,12 @@ const ToggleButton = ({ isOpen, toggleMenu }) => {
           ) : data.length > 0 ? (
             data.map((item) => (
               <Link to="/" key={item.sys.id}>
-                <h1 className="cursive logo">{item.fields.mainLogo}</h1>
-                <p className="cursive">{item.fields.subTitleLogo}</p>
+                <h1 className="TheSecretThings logo">{item.fields.mainLogo}</h1>
+                <p className="TheSecretThings">{item.fields.subTitleLogo}</p>
               </Link>
             ))
           ) : (
-            <h1 className="cursive logo">No Logo Data Available</h1>
+            <h1 className="TheSecretThings logo">No Logo Data Available</h1>
           )}
         </div>
       </header>

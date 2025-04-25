@@ -88,7 +88,7 @@ const ServiceTitle = () => {
         </div>
         <div><div className='line'></div></div>
         <div className='title-content'>
-          <h3 className='cursive' ref={titleRef}>
+          <h3 className='TheSecretThings' ref={titleRef}>
             {data?.fields?.title || 'Default Title'}
           </h3>
           {richTextDocument ? (

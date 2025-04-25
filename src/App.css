@@ -21,12 +21,14 @@ u {
   text-decoration: none;
 }
 
-@font-face {
-  font-family: "cursive";
-  src: url("./fonts/thesecretthings-webfont.woff2") format("opentype");
-  font-display: swap;
-}
 
+@font-face {
+  font-family: 'TheSecretThings';
+  src: url("/public/fonts/thesecretthings-webfont.woff2") format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; /* Optional, for better performance */
+}
 
 .inter {
   font-family: "Inter Tight", sans-serif;
@@ -34,18 +36,22 @@ u {
   font-style: normal;
 }
 
-.cursive {
-  font-family: "cursive";
-  font-weight: 400;
+.TheSecretThings {
+  font-family:'TheSecretThings';
+  font-weight: 100;
   font-style: normal;
 }
 
 
 h1 {
-  font-family: 'cursive'; 
-  font-weight: 500;
+  font-family: 'TheSecretThings'; 
+  font-weight: 100;
   color:var(--red);
   background: linear-gradient(to top, var(--pink) 50%, transparent 50%);
+}
+
+.cursive {
+  font-family: 'TheSecretThings'; 
 }
 
 h2{
@@ -63,7 +69,8 @@ h3 {
 }
 
 h5 {
-  font-family: 'cursive';
+  font-family: 'TheSecretThings';
+  font-weight: 200;
   font-size: clamp(14px, 5vw, 18px);
   line-height: 1.6em;
   margin-block: 20px;
@@ -97,6 +104,7 @@ html, body {
   padding: 0;
   height: 100%; /* Ensure the body takes up the full viewport height */
   scroll-behavior: auto!important;
+  font-family: 'TheSecretThings';
 }
 
 body {

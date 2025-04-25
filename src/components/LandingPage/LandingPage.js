@@ -60,7 +60,7 @@ const LandingPage = ({ onLoadComplete }) => {
               <section className="landing-content">
                 <div className='presentation' ref={presentationRef}>
                   <h5 className='landing-title'><sup>Pauline</sup> Babin</h5>
-                  <p className='cursive'>
+                  <p className='TheSecretThings'>
                     {item.fields.title && documentToReactComponents(item.fields.titleDescription)}
                   </p>
                 </div>

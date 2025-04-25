@@ -123,7 +123,7 @@ const ServiceDetail = () => {
 
         <div className="flip-gallery">
           {service?.fields?.pictureGallery?.map((image, imgIndex) => (
-            <img key={imgIndex} src={image.fields.file.url} alt={image.fields.title} />
+            <img key={imgIndex} src={optimizeImage(image.fields.file.url, { w: 1200 })} alt={image.fields.title} />
           ))}
         </div>
 
