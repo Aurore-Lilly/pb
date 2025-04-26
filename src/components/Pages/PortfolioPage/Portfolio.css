@@ -113,16 +113,15 @@
   justify-content: center;
   align-items: center;
   opacity: 0;
-  scale: 0.95;
-  overflow: hidden; /* Prevent overflow of the gallery */
-  scroll-behavior: smooth; /* Smooth scroll effect */
-
+  transform: scale(1); /* Remove scaling effect */
+  overflow: hidden;
+  z-index: 2000;
 }
 
 .fullscreen-gallery.show-gallery {
   display: flex;
   opacity: 1;
-  scale: 1;
+  transform: scale(1); /* Ensure it stays full size */
 }
 
 .fullscreen-gallery .close-gallery {

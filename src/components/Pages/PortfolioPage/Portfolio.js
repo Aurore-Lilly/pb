@@ -39,6 +39,7 @@ const Portfolio = () => {
           y: 30,
           duration: 0.6,
           ease: "power2.out",
+          clearProps: "transform", // Clear transform after the animation is complete
           onComplete: () => {
 
             gsap.from(".portfolio-item", {
