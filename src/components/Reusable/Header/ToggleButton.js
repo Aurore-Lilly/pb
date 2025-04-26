@@ -41,6 +41,16 @@ const ToggleButton = ({ isOpen, toggleMenu }) => {
     fetchData();
   }, []);
 
+  // Ensure correct initial state and position when page loads
+  useEffect(() => {
+    const button = document.querySelector('.toggle-button');
+    if (button) {
+      // Ensure initial styles are correct before animations run
+      button.style.opacity = '1';  // Ensures the button is visible
+      button.style.transform = 'translateY(0)';
+    }
+  }, []); // Runs only once on first render
+
   return (
     <div className="header landing-page inter">
       <header className={`landing-header ${scrolled ? 'scrolled' : ''}`}>

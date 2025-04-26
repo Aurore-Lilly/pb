@@ -34,7 +34,7 @@ const Portfolio = () => {
   useLayoutEffect(() => {
     if (!loading && containerRef.current) {
       const ctx = gsap.context(() => {
-        gsap.from(containerRef.current, {
+        gsap.from(".title-container", {
           opacity: 0,
           y: 30,
           duration: 0.6,

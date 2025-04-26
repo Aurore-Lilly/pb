@@ -1,3 +1,10 @@
+.portfolio-style {
+    .toggle-button {
+        background-color: var(--hot);
+        border: 1px solid var(--white);
+    }
+}
+ 
 .cursive.logo {
   transition: color 1s ease;
   background: none;
@@ -10,11 +17,13 @@
     color:var(--white);
   }
 }
+.logo {
+  background: transparent;
+}
 
 .logo-closed{
   h1, p{
     color:var(--red);
-    background: transparent;
   }
 }
 

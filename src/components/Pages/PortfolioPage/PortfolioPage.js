@@ -51,32 +51,42 @@ const PortfolioPage = () => {
 
   // Animate header, then reveal portfolio content, then footer
   useLayoutEffect(() => {
-    if (showHeader) {
-      const ctx = gsap.context(() => {
-        gsap.fromTo(
-          [toggleRef.current, hamburgerRef.current],
-          { opacity: 0, y: -20 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            ease: 'power2.out',
-            stagger: 0.15,
-            clearProps: 'all',
-            onComplete: () => {
+  if (showHeader) {
+    const ctx = gsap.context(() => {
+      // Animate both the PortfolioTitle and ToggleButton at the same time
+      gsap.fromTo(
+        [toggleRef.current, hamburgerRef.current, ".title-container"],
+        { opacity: 0, y: -20 }, // Initial state: opacity 0, move up
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          stagger: 0.15,
+          clearProps: "all", // Reset any transform/opacity after the animation
+          onComplete: () => {
+            setTimeout(() => {
+              setShowContent(true);
               setTimeout(() => {
-                setShowContent(true);
-                setTimeout(() => {
-                  setShowFooter(true);
-                }, 300); // delay footer after portfolio appears
-              }, 100);
-            },
-          }
-        );
-      }, headerContainer);
-      return () => ctx.revert();
+                setShowFooter(true);
+              }, 300); // Delay footer after portfolio appears
+            }, 100);
+          },
+        }
+      );
+    }, headerContainer);
+
+    // Make sure ToggleButton has the correct initial position/color
+    // Set initial styles here (in case it's not behaving properly on re-render)
+    if (toggleRef.current) {
+      toggleRef.current.style.opacity = 1;
+      toggleRef.current.style.transform = 'translateY(0)';
     }
-  }, [showHeader]);
+    
+    return () => ctx.revert();
+  }
+}, [showHeader]);
+
 
   // Optional scroll trigger
   useEffect(() => {
@@ -104,7 +114,11 @@ const PortfolioPage = () => {
       {showHeader && (
         <div className="header-components" ref={headerContainer}>
           <div ref={toggleRef}>
-            <ToggleButton isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+            <ToggleButton 
+              isOpen={isMenuOpen} 
+              toggleMenu={toggleMenu} 
+              ref={toggleRef}
+            />
           </div>
           <div ref={hamburgerRef}>
             <Hamburger isOpen={isMenuOpen} toggleMenu={toggleMenu} />
